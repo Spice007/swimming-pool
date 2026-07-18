@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} scroll-smooth`}
     >
-      <body className="font-sans bg-[#F8FAFC] text-[#0F172A] min-h-screen selection:bg-[#57D6FF]/30 selection:text-[#071A35]">
+      <body className="font-sans bg-[#020813] text-[#0F172A] min-h-screen selection:bg-[#57D6FF]/30 selection:text-[#071A35]">
         <SmoothScroll>
           <CustomCursor />
           {children}

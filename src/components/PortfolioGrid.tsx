@@ -144,223 +144,144 @@ const projects: Project[] = [
   },
 ];
 
-const filterLabels: Record<string, string> = {
-  "All": "All Projects",
+const filterIcons: Record<string, React.ReactNode> = {
+  "All Projects": <Grid className="w-3.5 h-3.5" />,
+  "Luxury Pool": <Gem className="w-3.5 h-3.5" />,
+  "Residential Pool": <Home className="w-3.5 h-3.5" />,
+  "Commercial Pool": <Building2 className="w-3.5 h-3.5" />,
+  "Custom Pool Design": <Compass className="w-3.5 h-3.5" />,
+  "Pool Renovation": <RefreshCw className="w-3.5 h-3.5" />
+};
+
+const pillLabels: Record<string, string> = {
   "Luxury Pool": "Luxury Pool",
   "Residential Pool": "Residential Pool",
   "Commercial Pool": "Commercial Pool",
-  "Custom Pool Design": "Custom Pool Design",
+  "Custom Pool Design": "Custom Design",
   "Pool Renovation": "Pool Renovation"
+};
+
+const pillIcons: Record<string, React.ReactNode> = {
+  "Luxury Pool": <Gem className="w-3.5 h-3.5 text-[#009DFF]" />,
+  "Residential Pool": <Home className="w-3.5 h-3.5 text-[#009DFF]" />,
+  "Commercial Pool": <Building2 className="w-3.5 h-3.5 text-[#009DFF]" />,
+  "Custom Pool Design": <Compass className="w-3.5 h-3.5 text-[#009DFF]" />,
+  "Pool Renovation": <RefreshCw className="w-3.5 h-3.5 text-[#009DFF]" />
 };
 
 export default function PortfolioGrid() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("All Projects");
+  const [activeDot, setActiveDot] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [visibleCards, setVisibleCards] = useState(3);
-  const [isMounted, setIsMounted] = useState(false);
-  
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
-  const isMoved = useRef(false);
 
-  const categories = ["All", "Luxury Pool", "Residential Pool", "Commercial Pool", "Custom Pool Design", "Pool Renovation"];
+  const categories = [
+    "All Projects", 
+    "Luxury Pool", 
+    "Residential Pool", 
+    "Commercial Pool", 
+    "Custom Pool Design", 
+    "Pool Renovation"
+  ];
 
-  const filteredProjects = activeFilter === "All"
+  const filteredProjects = activeFilter === "All Projects"
     ? projects
     : projects.filter(p => p.category === activeFilter);
 
-  React.useEffect(() => {
-    setIsMounted(true);
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setVisibleCards(3);
-      } else if (window.innerWidth >= 768) {
-        setVisibleCards(2);
-      } else {
-        setVisibleCards(1);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const handleScroll = () => {
-    if (!sliderRef.current) return;
-    const { scrollLeft } = sliderRef.current;
-    const card = sliderRef.current.firstElementChild as HTMLElement;
-    if (!card) return;
-    const cardWidth = card.getBoundingClientRect().width;
-    const gap = window.innerWidth >= 1024 ? 32 : 24;
-    const itemWidth = cardWidth + gap;
-    const index = Math.round(scrollLeft / itemWidth);
-    setActiveIndex(index);
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!sliderRef.current) return;
-    setIsDragging(true);
-    isMoved.current = false;
-    startX.current = e.pageX - sliderRef.current.offsetLeft;
-    scrollLeft.current = sliderRef.current.scrollLeft;
-    sliderRef.current.style.scrollBehavior = "auto";
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !sliderRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5;
-    if (Math.abs(walk) > 5) {
-      isMoved.current = true;
-    }
-    sliderRef.current.scrollLeft = scrollLeft.current - walk;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
     if (sliderRef.current) {
-      sliderRef.current.style.scrollBehavior = "smooth";
+      const { scrollLeft } = sliderRef.current;
+      const cardWidth = sliderRef.current.firstElementChild?.getBoundingClientRect().width || 400;
+      const gap = 32; // gap-8
+      const index = Math.round(scrollLeft / (cardWidth + gap));
+      setActiveDot(Math.max(0, Math.min(index, filteredProjects.length - 1)));
     }
   };
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
+  const scrollToCard = (index: number) => {
     if (sliderRef.current) {
-      sliderRef.current.style.scrollBehavior = "smooth";
+      const cardWidth = sliderRef.current.firstElementChild?.getBoundingClientRect().width || 400;
+      const gap = 32; // gap-8
+      sliderRef.current.scrollTo({
+        left: index * (cardWidth + gap),
+        behavior: "smooth"
+      });
+      setActiveDot(index);
     }
-  };
-
-  const handleCardClick = (project: Project) => {
-    if (isMoved.current) return;
-    setSelectedProject(project);
-  };
-
-  const scrollToActiveIndex = (index: number) => {
-    if (!sliderRef.current) return;
-    const card = sliderRef.current.firstElementChild as HTMLElement;
-    if (!card) return;
-    const cardWidth = card.getBoundingClientRect().width;
-    const gap = window.innerWidth >= 1024 ? 32 : 24;
-    const itemWidth = cardWidth + gap;
-    sliderRef.current.scrollTo({
-      left: index * itemWidth,
-      behavior: "smooth"
-    });
-    setActiveIndex(index);
   };
 
   const scrollPrev = () => {
-    if (!sliderRef.current) return;
-    const card = sliderRef.current.firstElementChild as HTMLElement;
-    if (!card) return;
-    const cardWidth = card.getBoundingClientRect().width;
-    const gap = window.innerWidth >= 1024 ? 32 : 24;
-    const itemWidth = cardWidth + gap;
-    sliderRef.current.scrollTo({
-      left: sliderRef.current.scrollLeft - itemWidth,
-      behavior: "smooth"
-    });
+    if (sliderRef.current) {
+      const cardWidth = sliderRef.current.firstElementChild?.getBoundingClientRect().width || 400;
+      sliderRef.current.scrollBy({ left: -(cardWidth + 32), behavior: "smooth" });
+    }
   };
 
   const scrollNext = () => {
-    if (!sliderRef.current) return;
-    const card = sliderRef.current.firstElementChild as HTMLElement;
-    if (!card) return;
-    const cardWidth = card.getBoundingClientRect().width;
-    const gap = window.innerWidth >= 1024 ? 32 : 24;
-    const itemWidth = cardWidth + gap;
-    sliderRef.current.scrollTo({
-      left: sliderRef.current.scrollLeft + itemWidth,
-      behavior: "smooth"
-    });
+    if (sliderRef.current) {
+      const cardWidth = sliderRef.current.firstElementChild?.getBoundingClientRect().width || 400;
+      sliderRef.current.scrollBy({ left: cardWidth + 32, behavior: "smooth" });
+    }
   };
 
-  const dotsCount = isMounted ? Math.max(1, filteredProjects.length - visibleCards + 1) : 1;
-  const showNavigation = isMounted && filteredProjects.length > visibleCards;
-
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-white text-[#071A35] relative overflow-hidden">
-      <style dangerouslySetInnerHTML={{ __html: `
-        .carousel-card-container {
-          width: 100%;
-        }
-        @media (min-width: 768px) {
-          .carousel-card-container {
-            width: calc((100% - 2 * 24px) / 2.08);
-          }
-        }
-        @media (min-width: 1024px) {
-          .carousel-card-container {
-            width: calc((100% - 3 * 32px) / 3.08);
-          }
-        }
-      `}} />
+    <section id="projects" className="py-24 bg-white text-[#071A35] relative overflow-hidden">
       
-      {/* Subtle Background Glows to elevate design */}
-      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#009DFF]/2 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#57D6FF]/2 blur-[120px] pointer-events-none" />
+      {/* Subtle Background Ambient Lighting to elevate design */}
+      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#009DFF]/2 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#57D6FF]/2 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Header Row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-8">
-          <div>
+        {/* Header with Wavy underline and Description */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-12">
+          <div className="md:col-span-7">
             <span className="text-xs font-bold uppercase tracking-widest text-[#009DFF] block mb-3">
               PORTFOLIO
             </span>
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#071A35] leading-tight">
-              Our Recent <br className="hidden sm:inline" />
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A35] leading-tight">
+              Our Recent <br />
               <span className="text-[#009DFF] italic">Pool Projects</span>
             </h2>
             <svg className="w-24 h-2.5 text-[#009DFF] mt-2.5" viewBox="0 0 100 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 5C10 5 15 2 25 5C35 8 40 5 50 5C60 5 65 2 75 5C85 8 90 5 100 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
           </div>
-          <div className="md:max-w-md lg:max-w-lg">
+          <div className="md:col-span-5">
             <p className="text-[#071A35]/60 font-light text-sm sm:text-base leading-relaxed">
               Explore some of our completed pool designs, construction work, and luxury renovations.
             </p>
           </div>
         </div>
-        
-        {/* Filters Row */}
-        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-8 flex-nowrap -mx-6 px-6 lg:mx-0 lg:px-0 mb-12">
+
+        {/* Filter Tabs */}
+        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-6 flex-nowrap -mx-6 px-6 lg:mx-0 lg:px-0 mb-12">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => {
                 setActiveFilter(category);
-                setActiveIndex(0);
+                setActiveDot(0);
                 if (sliderRef.current) sliderRef.current.scrollLeft = 0;
               }}
-              className={`px-5 py-2.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shrink-0 border cursor-pointer hover:scale-105 active:scale-95 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 flex items-center gap-2 shrink-0 border cursor-pointer hover:scale-105 active:scale-95 ${
                 activeFilter === category
                   ? "bg-[#071A35] text-white border-[#071A35] shadow-md"
                   : "bg-white border-slate-200 text-slate-500 hover:text-[#071A35] hover:border-slate-300"
               }`}
             >
-              <span>{filterLabels[category]}</span>
+              {filterIcons[category]}
+              <span>{category}</span>
             </button>
           ))}
         </div>
 
-        {/* Horizontal Slider Layout with Overlapping Navigation */}
+        {/* Horizontal Slider Layout with Overlapping Navigation and Desktop Peek Effect */}
         <div className="relative group/carousel">
           <div 
             ref={sliderRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave}
             onScroll={handleScroll}
-            onDragStart={(e) => e.preventDefault()}
-            className={`flex gap-6 lg:gap-8 overflow-x-auto select-none no-scrollbar pb-8 -mx-6 px-6 lg:-mx-12 lg:px-12 ${
-              isDragging ? "cursor-grabbing" : "snap-x snap-mandatory cursor-grab scroll-smooth"
-            }`}
+            className="flex gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 -mx-6 px-6 lg:-mx-12 lg:px-12 select-none no-scrollbar"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
@@ -370,54 +291,46 @@ export default function PortfolioGrid() {
               {filteredProjects.map((project) => (
                 <div 
                   key={project.id} 
-                  className="flex-shrink-0 snap-start carousel-card-container"
+                  className="flex-shrink-0 w-full md:w-[calc((100%-3rem)/2.08)] lg:w-[calc((100%-6rem)/3.08)] snap-start"
                 >
-                  <ProjectCard project={project} onClick={handleCardClick} />
+                  <ProjectCard project={project} onClick={setSelectedProject} />
                 </div>
               ))}
             </AnimatePresence>
           </div>
 
           {/* Left Arrow (Overlapping edge) */}
-          {showNavigation && (
-            <button
-              onClick={scrollPrev}
-              disabled={activeIndex === 0}
-              className={`absolute left-2 md:-left-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                activeIndex === 0 ? "opacity-30 cursor-not-allowed" : "opacity-90 hover:opacity-100 hover:scale-105 active:scale-95"
-              }`}
-              aria-label="Previous projects"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-          )}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-2 md:-left-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] hover:bg-slate-50 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 opacity-90 hover:opacity-100"
+            aria-label="Previous projects"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
           {/* Right Arrow (Overlapping edge) */}
-          {showNavigation && (
-            <button
-              onClick={scrollNext}
-              disabled={activeIndex >= filteredProjects.length - visibleCards}
-              className={`absolute right-2 md:-right-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                activeIndex >= filteredProjects.length - visibleCards ? "opacity-30 cursor-not-allowed" : "opacity-90 hover:opacity-100 hover:scale-105 active:scale-95"
-              }`}
-              aria-label="Next projects"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          )}
+          <button
+            onClick={scrollNext}
+            className="absolute right-2 md:-right-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] hover:bg-slate-50 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 opacity-90 hover:opacity-100"
+            aria-label="Next projects"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* Pagination Dots */}
-        {showNavigation && (
-          <div className="flex justify-center items-center gap-2 mt-8">
-            {Array.from({ length: dotsCount }).map((_, idx) => (
+        {/* Pagination Indicators (Dots) */}
+        {filteredProjects.length > 1 && (
+          <div className="mt-10 flex items-center justify-center gap-2.5">
+            {filteredProjects.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => scrollToActiveIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeIndex === idx ? "w-6 bg-[#009DFF]" : "w-2 bg-slate-300 hover:bg-slate-400"
+                onClick={() => scrollToCard(idx)}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  activeDot === idx
+                    ? "bg-[#009DFF] w-6"
+                    : "bg-slate-300 hover:bg-slate-400 w-2.5"
                 }`}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={`Go to project ${idx + 1}`}
               />
             ))}
           </div>
@@ -452,9 +365,11 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
     const width = rect.width;
     const height = rect.height;
     
+    // Position relative to card center
     const x = e.clientX - rect.left - width / 2;
     const y = e.clientY - rect.top - height / 2;
 
+    // Constrain tilt angle (max 8 degrees for subtle luxury movement)
     const tiltX = -(y / (height / 2)) * 8;
     const tiltY = (x / (width / 2)) * 8;
 
@@ -486,7 +401,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       onClick={() => onClick(project)}
-      className="group relative w-full h-[500px] overflow-hidden rounded-[32px] cursor-pointer shadow-lg bg-slate-900 transition-all duration-500 flex flex-col justify-end preserve-3d select-none"
+      className="group relative w-full h-[450px] overflow-hidden rounded-[32px] cursor-pointer shadow-lg bg-slate-900 transition-all duration-500 flex flex-col justify-end preserve-3d select-none"
       style={{
         boxShadow: isHovered
           ? "0 20px 40px rgba(0, 157, 255, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.02)"
@@ -500,8 +415,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
         alt={project.name}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none select-none"
-        draggable={false}
+        className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
       {/* Very Subtle Gradient Overlay for visual refinement */}
@@ -531,19 +445,20 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
       />
 
       {/* Card Category Pill (top right) */}
-      <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm border border-slate-100 shadow-sm rounded-full px-3 py-1.5 z-20 select-none">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-[#071A35]">
-          {project.category}
+      <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm border border-slate-100 shadow-sm rounded-full px-3 py-1.5 flex items-center gap-1.5 z-20 select-none">
+        {pillIcons[project.category]}
+        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
+          {pillLabels[project.category]}
         </span>
       </div>
 
       {/* Inset White Detail Card (matching reference image) */}
-      <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-5 flex items-center justify-between gap-4 z-20 transition-transform duration-300 group-hover:scale-[1.02] border border-white/40">
+      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl shadow-lg p-4 sm:p-5 flex items-center justify-between gap-4 z-20 transition-transform duration-300 group-hover:scale-[1.02]">
         <div className="overflow-hidden">
           <h3 className="font-serif text-[#071A35] text-[15px] sm:text-[17px] font-bold truncate">
             {project.name}
           </h3>
-          <div className="flex items-center gap-1.5 mt-1.5 text-slate-500 font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 mt-1 text-slate-500 font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider">
             <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             <span className="truncate">{project.location}</span>
           </div>

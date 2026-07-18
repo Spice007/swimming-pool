@@ -96,7 +96,7 @@ export default function Navbar() {
   const isCompact = !isMobile && scrolled && !isHovered;
 
   return (
-    <header className="fixed top-6 left-0 w-full z-50 pointer-events-none flex justify-center px-4">
+    <header className="fixed top-3 left-0 w-full z-50 pointer-events-none flex justify-center px-4">
       <motion.div
         layout
         onMouseEnter={() => !isMobile && setIsHovered(true)}
@@ -130,7 +130,7 @@ export default function Navbar() {
               className="flex items-center justify-between w-full"
             >
               <div className="flex items-center gap-2">
-                <span className="font-serif text-lg font-bold tracking-widest">ADLAT</span>
+                <span className="font-serif text-sm font-bold tracking-widest">ADLAT</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
               </div>
 
@@ -154,7 +154,7 @@ export default function Navbar() {
               {/* Header inside mobile island */}
               <div className="flex items-center justify-between pb-3 border-b border-white/5">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif text-xl font-bold tracking-widest">ADLAT</span>
+                  <span className="font-serif text-sm font-bold tracking-widest">ADLAT</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF]" />
                 </div>
                 <button
@@ -210,7 +210,7 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="flex items-center justify-center gap-2.5 w-full"
             >
-              <span className="font-serif text-lg font-bold tracking-widest text-white">ADLAT</span>
+              <span className="font-serif text-sm font-bold tracking-widest text-white">ADLAT</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
             </motion.div>
           )}
@@ -231,7 +231,7 @@ export default function Navbar() {
                 onClick={(e) => handleLinkClick(e, "#home", "Home")}
                 className="flex items-center gap-2 group cursor-pointer"
               >
-                <span className="font-serif text-xl font-bold tracking-widest text-white transition-colors duration-300">
+                <span className="font-serif text-sm font-bold tracking-widest text-white transition-colors duration-300">
                   ADLAT
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] group-hover:scale-150 transition-transform duration-300" />

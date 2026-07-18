@@ -21,6 +21,13 @@ import {
   MapPin,
   Calendar,
   Compass,
+  Users,
+  Award,
+  Globe,
+  Share2,
+  Waves,
+  Palmtree,
+  Building2
 } from "lucide-react";
 import Image from "next/image";
 import confetti from "canvas-confetti";
@@ -45,8 +52,8 @@ const initialTestimonials: Testimonial[] = [
     id: "eko-horizon",
     name: "Olumide Adebayo",
     location: "Lagos, Nigeria",
-    projectType: "The Eko Horizon Pool",
-    quote: "ADLAT transformed our Ikoyi estate into a breathtaking sanctuary. The blend of local Nigerian granite and custom automated features is spectacular. Their attention to structural details is exceptional.",
+    projectType: "The Horizon Pool",
+    quote: "ADLAT transformed our Ikoyi estate into a breathtaking sanctuary. The blend of local Nigerian granite and custom automated features is spectacular. Their attention to detail is unmatched.",
     rating: 5,
     profileImage: "/images/portrait-alexander.png",
     projectImages: ["/images/project-nigeria.png", "/images/project-nigeria-tiling.jpg"],
@@ -59,8 +66,8 @@ const initialTestimonials: Testimonial[] = [
     id: "elena",
     name: "Elena Rostova",
     location: "Miami, FL",
-    projectType: "Resort-Style Oasis",
-    quote: "Our resort-style pool is the crown jewel of our villa. The subterranean swim-up bar, integrated stone fire burners, and twilight lighting program make us feel like we are at a private five-star estate.",
+    projectType: "Resort Style Oasis",
+    quote: "Our resort-style pool is the crown jewel of our villa. The subterranean swim-up bar, integrated stone fire burners, and twilight lighting program make us feel like we are at a five-star resort every day.",
     rating: 5,
     profileImage: "/images/portrait-elena.png",
     projectImages: ["/images/project-resort-new.png", "/images/project-modern-new.png"],
@@ -74,7 +81,7 @@ const initialTestimonials: Testimonial[] = [
     name: "Marcus Vance",
     location: "New York, NY",
     projectType: "Acrylic Penthouse Pool",
-    quote: "Designing an acrylic-walled rooftop pool 42 stories up seemed impossible. ADLAT handled the extreme structural engineering and wind-barrier calculations with absolute precision. The result is breathtaking.",
+    quote: "Designing an acrylic-walled rooftop pool 42 stories up seemed impossible. ADLAT handled the extreme structural engineering and wind-barrier calculations with absolute precision.",
     rating: 5,
     profileImage: "/images/portrait-marcus.png",
     projectImages: ["/images/project-rooftop-new.png", "/images/project-modern-new.png"],
@@ -129,59 +136,120 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-[#020813] text-white relative overflow-hidden">
+      {/* Decorative Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.007)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.007)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* Decorative details */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#57D6FF]/3 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#009DFF]/3 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#57D6FF]/2 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#009DFF]/2 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-8">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#57D6FF] block mb-3">
-              Client Perspectives
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white">
-              Client Success Stories
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[#57D6FF]">
+                CLIENT PERSPECTIVES
+              </span>
+            </div>
+            <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+              Success Stories, <br />
+              <span className="text-[#57D6FF] italic">Real Impact.</span>
             </h2>
+            <div className="w-24 h-0.5 bg-[#57D6FF]/35 mt-4" />
+            <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed mt-4 max-w-2xl">
+              Explore how we've helped transform ideas into exceptional spaces and unforgettable experiences.
+            </p>
           </div>
           
           {/* Controls Panel */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:self-end shrink-0">
             {/* Grid/Carousel Toggles */}
-            <div className="flex bg-slate-900/60 p-1.5 rounded-full border border-white/5 backdrop-blur-md">
+            <div className="flex bg-slate-900/80 p-1 rounded-full border border-white/10 backdrop-blur-md relative shrink-0">
               <button
                 onClick={() => setLayoutMode("grid")}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                  layoutMode === "grid"
-                    ? "bg-[#57D6FF] text-[#071A35]"
-                    : "text-slate-400 hover:text-white"
+                className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 z-10 cursor-pointer ${
+                  layoutMode === "grid" ? "text-[#071A35]" : "text-slate-400 hover:text-white"
                 }`}
               >
+                {layoutMode === "grid" && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-[#57D6FF] rounded-full z-[-1]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
                 <LayoutGrid className="w-3.5 h-3.5" />
                 <span>Grid View</span>
               </button>
               <button
                 onClick={() => setLayoutMode("carousel")}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                  layoutMode === "carousel"
-                    ? "bg-[#57D6FF] text-[#071A35]"
-                    : "text-slate-400 hover:text-white"
+                className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 z-10 cursor-pointer ${
+                  layoutMode === "carousel" ? "text-[#071A35]" : "text-slate-400 hover:text-white"
                 }`}
               >
+                {layoutMode === "carousel" && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-[#57D6FF] rounded-full z-[-1]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
                 <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Carousel</span>
+                <span>Carousel View</span>
               </button>
             </div>
 
             {/* Share CTA button */}
             <button
               onClick={() => setSubmitModalOpen(true)}
-              className="flex items-center gap-1.5 px-5 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 bg-white/5 hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] hover:shadow-[0_0_15px_rgba(87,214,255,0.25)] transition-all duration-300 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 bg-white/5 hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] transition-all duration-300 cursor-pointer text-white"
             >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Share Journey</span>
+              <Share2 className="w-3.5 h-3.5" />
+              <span>Share Your Journey</span>
+            </button>
+          </div>
+        </div>
+
+        {/* View Controls & Page Index Row (Below header, above cards grid) */}
+        <div className="flex justify-end items-center gap-4 mb-6">
+          <span className="font-serif text-sm text-slate-400">
+            <span className="text-[#57D6FF] font-bold">
+              {layoutMode === "carousel" 
+                ? `0${carouselIndex + 1}` 
+                : "01"}
+            </span>{" "}
+            / 0{layoutMode === "carousel" ? list.length : "03"}
+          </span>
+          <div className="flex gap-2">
+            <button
+              onClick={layoutMode === "carousel" ? handlePrevCarousel : undefined}
+              disabled={layoutMode !== "carousel"}
+              className={`w-9 h-9 rounded-full border border-white/10 text-white flex items-center justify-center transition-all duration-300 ${
+                layoutMode === "carousel" 
+                  ? "hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] cursor-pointer" 
+                  : "opacity-40 cursor-default"
+              }`}
+              aria-label="Previous story"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={layoutMode === "carousel" ? handleNextCarousel : undefined}
+              disabled={layoutMode !== "carousel"}
+              className={`w-9 h-9 rounded-full text-white flex items-center justify-center transition-all duration-300 ${
+                layoutMode === "carousel" 
+                  ? "border border-[#57D6FF] hover:bg-[#57D6FF] hover:text-[#071A35] cursor-pointer" 
+                  : "border border-white/10 opacity-40 cursor-default"
+              }`}
+              aria-label="Next story"
+            >
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -252,47 +320,58 @@ export default function Testimonials() {
                     </motion.div>
                   </AnimatePresence>
                 </div>
-
-                {/* Carousel Controls */}
-                <div className="flex items-center justify-between mt-8 border-t border-white/5 pt-6">
-                  {/* Arrows */}
-                  <div className="flex gap-4">
-                    <button
-                      onClick={handlePrevCarousel}
-                      className="p-3.5 rounded-full border border-white/10 text-white hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] transition-all duration-300 shadow-md cursor-pointer"
-                      aria-label="Previous story"
-                    >
-                      <ArrowLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={handleNextCarousel}
-                      className="p-3.5 rounded-full border border-white/10 text-white hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] transition-all duration-300 shadow-md cursor-pointer"
-                      aria-label="Next story"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {/* Dots pagination */}
-                  <div className="flex gap-2">
-                    {list.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          setCarouselDir(idx > carouselIndex ? 1 : -1);
-                          setCarouselIndex(idx);
-                        }}
-                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          carouselIndex === idx ? "w-8 bg-[#57D6FF]" : "w-2 bg-slate-600 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+
+        {/* Bottom Metrics Panel (Stats Panel) */}
+        <div className="mt-16 p-6 rounded-[24px] bg-[#071A35]/25 border border-white/5 backdrop-blur-md shadow-lg">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/5 gap-6 lg:gap-0">
+            {/* Stat 1 */}
+            <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+                <Users className="w-5 h-5" />
+              </div>
+              <div className="text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-white block">150+</span>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-light tracking-wider uppercase block mt-0.5">Happy Clients</span>
+              </div>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+                <Building2 className="w-5 h-5" />
+              </div>
+              <div className="text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-white block">200+</span>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-light tracking-wider uppercase block mt-0.5">Projects Completed</span>
+              </div>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+                <Award className="w-5 h-5" />
+              </div>
+              <div className="text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-white block">5 Years</span>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-light tracking-wider uppercase block mt-0.5">Average Partnership</span>
+              </div>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+                <Globe className="w-5 h-5" />
+              </div>
+              <div className="text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-white block">3 Countries</span>
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-light tracking-wider uppercase block mt-0.5">Served Globally</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -322,6 +401,10 @@ export default function Testimonials() {
 
 /* Card Sub-Component for Grid view */
 function SuccessStoryCard({ story, onClick, index }: { story: Testimonial; onClick: () => void; index: number }) {
+  let icon = <Waves className="w-5 h-5" />;
+  if (story.id === "elena") icon = <Palmtree className="w-5 h-5" />;
+  else if (story.id === "marcus") icon = <Building2 className="w-5 h-5" />;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -329,58 +412,67 @@ function SuccessStoryCard({ story, onClick, index }: { story: Testimonial; onCli
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       onClick={onClick}
-      className="group relative flex flex-col justify-between p-7 rounded-3xl glass-card-dark border border-white/5 shadow-xl hover:border-[#57D6FF]/35 hover:shadow-[0_20px_40px_rgba(87,214,255,0.08)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer overflow-hidden min-h-[400px]"
+      className="group relative flex flex-col justify-between rounded-3xl bg-slate-900/35 border border-white/5 shadow-xl hover:border-[#57D6FF]/30 hover:shadow-[0_20px_45px_rgba(87,214,255,0.12)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer overflow-hidden min-h-[500px]"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#57D6FF]/3 blur-[50px] pointer-events-none rounded-full" />
+      {/* Background Interactive Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#57D6FF]/2 blur-[60px] pointer-events-none rounded-full" />
       
-      <div className="relative z-10">
-        {/* Rating and Quote Symbol */}
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex gap-1.5">
-            {[...Array(story.rating)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-[#57D6FF] text-[#57D6FF] transition-transform duration-300 group-hover:scale-110" />
-            ))}
-          </div>
-          <Quote className="w-8 h-8 text-[#57D6FF]/15 shrink-0" />
+      {/* Project Image Banner */}
+      <div className="relative w-full h-48 overflow-hidden bg-slate-950">
+        <Image
+          src={story.projectImages[0]}
+          alt={story.projectType}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none select-none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+        
+        {/* Rating Badge floating on image */}
+        <div className="absolute top-4 left-4 flex items-center gap-1 bg-[#020813]/70 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10 text-xs font-semibold text-white">
+          <Star className="w-3.5 h-3.5 fill-[#57D6FF] text-[#57D6FF]" />
+          <span>{story.rating.toFixed(1)}</span>
         </div>
-
-        {/* Written Review Teaser */}
-        <blockquote className="font-light text-slate-200 text-sm sm:text-base leading-relaxed mb-6 italic line-clamp-4">
-          "{story.quote}"
-        </blockquote>
       </div>
 
-      {/* Profile & Project specs */}
-      <div className="relative z-10 mt-auto border-t border-white/10 pt-6">
-        <div className="flex items-center gap-3.5">
-          {/* Circular avatar with glowing ring */}
-          <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 shrink-0 bg-slate-900 ring-2 ring-[#57D6FF]/20 group-hover:ring-[#57D6FF]/55 transition-all duration-500">
+      {/* Details Container */}
+      <div className="px-6 py-6 flex flex-col flex-1 gap-4 text-left">
+        {/* Project Name and Icon Row */}
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-[#57D6FF] flex items-center justify-center shrink-0">
+            {icon}
+          </div>
+          <h3 className="font-serif text-[17px] font-bold text-white tracking-tight leading-snug">
+            {story.projectType}
+          </h3>
+        </div>
+
+        {/* Written Review Quote */}
+        <blockquote className="font-light text-slate-300 text-[13.5px] sm:text-[14.5px] leading-relaxed italic font-serif flex-1">
+          <span className="text-[#57D6FF] font-bold mr-1">“</span>
+          {story.quote}
+        </blockquote>
+
+        {/* Client Row */}
+        <div className="pt-4 border-t border-white/5 flex items-center gap-3.5 mt-auto">
+          <div className="relative w-11 h-11 rounded-full overflow-hidden border border-white/10 shrink-0 bg-slate-900 shadow-sm">
             <Image
               src={story.profileImage}
               alt={story.name}
               fill
-              sizes="48px"
+              sizes="44px"
               loading="lazy"
               className="object-cover"
             />
           </div>
           <div>
-            <span className="font-serif text-sm font-semibold text-white block">
+            <span className="font-serif text-sm font-bold text-white block leading-tight">
               {story.name}
             </span>
-            <span className="text-[10px] text-slate-400 block tracking-wider uppercase font-semibold">
+            <span className="text-[10px] text-slate-400 block tracking-wider uppercase font-semibold mt-0.5">
               {story.location}
             </span>
           </div>
-        </div>
-
-        {/* Project Tag */}
-        <div className="mt-5 flex items-center justify-between text-[10px] text-[#57D6FF] tracking-wider uppercase font-semibold">
-          <span>{story.projectType}</span>
-          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
-            Read Story
-            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-          </span>
         </div>
       </div>
     </motion.div>
@@ -392,29 +484,34 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
   return (
     <div
       onClick={onClick}
-      className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-3xl glass-card-dark border border-white/5 shadow-2xl hover:border-[#57D6FF]/35 hover:shadow-[0_20px_45px_rgba(87,214,255,0.08)] transition-all duration-500 cursor-pointer overflow-hidden max-w-4xl"
+      className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-3xl bg-slate-900/35 border border-white/5 shadow-2xl hover:border-[#57D6FF]/30 hover:shadow-[0_20px_45px_rgba(87,214,255,0.12)] transition-all duration-500 cursor-pointer overflow-hidden max-w-4xl min-h-[400px]"
     >
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#57D6FF]/4 blur-[80px] pointer-events-none rounded-full" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[#57D6FF]/4 blur-[100px] pointer-events-none rounded-full" />
       
       {/* Left side details */}
-      <div className="md:col-span-8 flex flex-col justify-between z-10 text-left">
+      <div className="md:col-span-7 flex flex-col justify-between z-10 text-left">
         <div>
           <div className="flex justify-between items-center mb-6">
-            <div className="flex gap-1.5">
-              {[...Array(story.rating)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#57D6FF] text-[#57D6FF] transition-transform duration-300 group-hover:scale-110" />
-              ))}
+            <div className="flex items-center gap-2 bg-[#0F172A]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
+              <span className="flex gap-1">
+                {[...Array(story.rating)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-[#57D6FF] text-[#57D6FF]" />
+                ))}
+              </span>
+              <span className="text-[10px] font-bold text-white uppercase tracking-widest pl-1.5 border-l border-white/20">
+                Verified Review
+              </span>
             </div>
-            <Quote className="w-10 h-10 text-[#57D6FF]/15 shrink-0" />
+            <Quote className="w-12 h-12 text-[#57D6FF]/10 shrink-0" />
           </div>
 
-          <blockquote className="font-serif font-light text-slate-100 text-base sm:text-xl leading-relaxed mb-6">
+          <blockquote className="font-serif font-light text-slate-100 text-lg sm:text-2xl leading-relaxed mb-6">
             "{story.quote}"
           </blockquote>
         </div>
 
         <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6">
-          <div className="relative w-14 h-14 rounded-full overflow-hidden border border-white/10 shrink-0 bg-slate-900 ring-2 ring-[#57D6FF]/20 group-hover:ring-[#57D6FF]/55 transition-all duration-500">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0 bg-slate-900 ring-2 ring-[#57D6FF]/35 group-hover:ring-[#57D6FF]/60 transition-all duration-500 shadow-md">
             <Image
               src={story.profileImage}
               alt={story.name}
@@ -428,7 +525,7 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
             <cite className="not-italic font-serif text-base font-bold text-white block">
               {story.name}
             </cite>
-            <span className="text-xs text-slate-400 block tracking-wider uppercase font-semibold">
+            <span className="text-xs text-slate-400 block tracking-wider uppercase font-semibold mt-0.5">
               {story.location}
             </span>
           </div>
@@ -436,23 +533,39 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
       </div>
 
       {/* Right side teaser gallery */}
-      <div className="md:col-span-4 flex flex-col gap-4 justify-center z-10">
-        <div className="relative w-full h-[180px] rounded-2xl overflow-hidden border border-white/10 bg-slate-900 group/carousel-img">
+      <div className="md:col-span-5 flex flex-col gap-4 justify-center z-10">
+        <div className="relative w-full h-[220px] rounded-2xl overflow-hidden border border-white/10 bg-slate-900 group/carousel-img shadow-lg">
           <Image
             src={story.projectImages[0]}
             alt={story.projectType}
             fill
             sizes="(max-width: 768px) 100vw, 30vw"
             loading="lazy"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-700 ease-out group-hover/carousel-img:scale-105"
           />
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/carousel-img:opacity-100 transition-opacity duration-300">
-            <Play className="w-10 h-10 text-white fill-white scale-90 group-hover/carousel-img:scale-100 transition-transform duration-300" />
-          </div>
+          <div className="absolute inset-0 bg-black/30 group-hover/carousel-img:bg-black/10 transition-colors duration-300" />
+          
+          {story.videoUrl && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative flex items-center justify-center">
+                <span className="absolute w-16 h-16 rounded-full bg-white/20 animate-ping duration-1000 pointer-events-none" />
+                <span className="relative p-4 rounded-full bg-white/10 border border-white/30 backdrop-blur-md text-white shadow-xl group-hover/carousel-img:bg-[#57D6FF] group-hover/carousel-img:text-[#071A35] group-hover/carousel-img:border-[#57D6FF] transition-all duration-300">
+                  <Play className="w-5 h-5 fill-current" />
+                </span>
+              </div>
+            </div>
+          )}
         </div>
-        <div className="text-left">
-          <span className="text-[10px] text-slate-400 uppercase tracking-widest block mb-1">Commission Type</span>
-          <span className="text-xs font-semibold text-[#57D6FF] uppercase tracking-wider block">{story.projectType}</span>
+        
+        <div className="text-left flex items-center justify-between border-b border-white/5 pb-2">
+          <div>
+            <span className="text-[10px] text-slate-400 uppercase tracking-widest block">Commission</span>
+            <span className="text-xs font-bold text-white uppercase tracking-wider block mt-0.5">{story.projectType}</span>
+          </div>
+          <div className="text-right">
+            <span className="text-[10px] text-slate-400 uppercase tracking-widest block">Timeline</span>
+            <span className="text-xs font-bold text-[#57D6FF] uppercase tracking-wider block mt-0.5">{story.timeframe}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -530,7 +643,7 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
               <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] mb-3 flex items-center gap-2 font-serif">
                 <Quote className="w-4 h-4" /> Client Testimony
               </h4>
-              <p className="text-slate-300 font-light text-sm sm:text-base leading-relaxed italic">
+              <p className="text-slate-300 font-light text-sm sm:text-base leading-relaxed italic text-left">
                 "{story.quote}"
               </p>
             </div>
@@ -539,73 +652,40 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
               <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] mb-3 flex items-center gap-2 font-serif">
                 <Compass className="w-4 h-4" /> The Commission Story
               </h4>
-              <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed text-left">
                 {story.fullStory}
               </p>
             </div>
 
-            {/* Gallery strip */}
-            <div className="space-y-3">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Project Gallery</span>
-              <div className="flex flex-wrap gap-4">
-                {story.projectImages.map((img, idx) => (
-                  <div key={idx} className="relative w-36 h-24 rounded-xl overflow-hidden border border-white/10 bg-slate-900">
-                    <Image
-                      src={img}
-                      alt="Project detail screenshot"
-                      fill
-                      sizes="144px"
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                ))}
+            {story.projectImages.length > 1 && (
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] mb-4 font-serif">
+                  Gallery
+                </h4>
+                <div className="grid grid-cols-2 gap-4">
+                  {story.projectImages.map((img, i) => (
+                    <div key={i} className="relative h-40 rounded-xl overflow-hidden border border-white/10">
+                      <Image src={img} alt="Project detail" fill className="object-cover" />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
-          {/* Right Specs Table */}
-          <div className="lg:col-span-4 space-y-6 lg:border-l lg:border-white/10 lg:pl-8">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] flex items-center gap-2 font-serif">
-              <Calendar className="w-4 h-4" /> Project Specifications
-            </h4>
-
-            <div className="divide-y divide-white/5 border-t border-b border-white/5 py-2">
-              <div className="flex justify-between py-2.5 text-xs sm:text-sm">
-                <span className="text-slate-400 font-light">Location</span>
-                <span className="font-semibold text-white flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#57D6FF]" />
-                  {story.location}
-                </span>
-              </div>
-              <div className="flex justify-between py-2.5 text-xs sm:text-sm">
-                <span className="text-slate-400 font-light">Duration</span>
-                <span className="font-semibold text-white">{story.timeframe}</span>
-              </div>
-              <div className="flex justify-between py-2.5 text-xs sm:text-sm">
-                <span className="text-slate-400 font-light">Target Budget</span>
-                <span className="font-semibold text-[#57D6FF]">{story.budget}</span>
-              </div>
-              <div className="flex justify-between py-2.5 text-xs sm:text-sm">
-                <span className="text-slate-400 font-light">Rating Given</span>
-                <span className="font-semibold text-white flex items-center gap-1">
-                  {story.rating} <Star className="w-3.5 h-3.5 fill-[#57D6FF] text-[#57D6FF]" />
-                </span>
-              </div>
+          {/* Right Spec List */}
+          <div className="lg:col-span-4 space-y-6 lg:border-l lg:border-white/10 lg:pl-6 text-left">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] block mb-1">Budget Range</span>
+              <span className="text-xs sm:text-sm font-semibold text-white">{story.budget}</span>
             </div>
-
-            <div className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 bg-slate-900">
-                <Image
-                  src={story.profileImage}
-                  alt={story.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <span className="text-xs text-slate-400 block">Verified Owner</span>
-                <span className="text-sm font-bold text-white block leading-tight">{story.name}</span>
-              </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] block mb-1">Timeframe</span>
+              <span className="text-xs sm:text-sm font-semibold text-white">{story.timeframe}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] block mb-1">Location</span>
+              <span className="text-xs sm:text-sm font-semibold text-white">{story.location}</span>
             </div>
           </div>
         </div>
@@ -614,42 +694,29 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
   );
 }
 
-/* User Review Submission Modal Sub-Component */
-function SubmitReviewModal({
-  onClose,
-  onAddStory,
-}: {
-  onClose: () => void;
-  onAddStory: (newStory: Testimonial) => void;
-}) {
+/* Review Upload Form Modal Sub-Component */
+function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAddStory: (story: Testimonial) => void }) {
+  const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     location: "",
     projectType: "",
     quote: "",
+    rating: 5,
     fullStory: "",
     budget: "",
     timeframe: "",
-    rating: 5,
   });
 
   const [profileFile, setProfileFile] = useState<File | null>(null);
-  const [profilePreview, setProfilePreview] = useState<string>("");
-  const [projectFiles, setProjectFiles] = useState<File[]>([]);
+  const [profilePreview, setProfilePreview] = useState<string | null>(null);
+  
+  const [projectFiles, setProjectFiles] = useState<FileList | null>(null);
   const [projectPreviews, setProjectPreviews] = useState<string[]>([]);
+  
   const [videoFile, setVideoFile] = useState<File | null>(null);
-  const [videoPreview, setVideoPreview] = useState<string>("");
-
-  const [step, setStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Prevent background scroll
-  useState(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  });
+  const [videoPreview, setVideoPreview] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -660,17 +727,16 @@ function SubmitReviewModal({
     const file = e.target.files?.[0];
     if (file) {
       setProfileFile(file);
-      const url = URL.createObjectURL(file);
-      setProfilePreview(url);
+      setProfilePreview(URL.createObjectURL(file));
     }
   };
 
   const handleProjectFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    if (files.length > 0) {
-      setProjectFiles((prev) => [...prev, ...files]);
-      const urls = files.map((file) => URL.createObjectURL(file));
-      setProjectPreviews((prev) => [...prev, ...urls]);
+    const files = e.target.files;
+    if (files) {
+      setProjectFiles(files);
+      const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+      setProjectPreviews(urls);
     }
   };
 
@@ -678,169 +744,162 @@ function SubmitReviewModal({
     const file = e.target.files?.[0];
     if (file) {
       setVideoFile(file);
-      const url = URL.createObjectURL(file);
-      setVideoPreview(url);
+      setVideoPreview(URL.createObjectURL(file));
     }
   };
 
-  const handleStarClick = (rating: number) => {
-    setFormData((prev) => ({ ...prev, rating }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name || !formData.quote || !formData.projectType) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate luxury API upload latency
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setTimeout(() => {
+      const newTestimonial: Testimonial = {
+        id: `custom-${Date.now()}`,
+        name: formData.name,
+        location: formData.location || "Lagos, Nigeria",
+        projectType: formData.projectType,
+        quote: formData.quote,
+        rating: formData.rating,
+        profileImage: profilePreview || "/images/portrait-alexander.png",
+        projectImages: projectPreviews.length > 0 ? projectPreviews : ["/images/project-resort-new.png"],
+        videoUrl: videoPreview || "",
+        fullStory: formData.fullStory || `A stunning swimming pool project execution detailing the high quality craftsmanship of ${formData.projectType}.`,
+        budget: formData.budget || "₦250,000,000 +",
+        timeframe: formData.timeframe || "12 Weeks",
+      };
 
-    // Fallbacks if user didn't upload files
-    const finalProfile = profilePreview || "/images/portrait-alexander.png";
-    const finalProjectImages = projectPreviews.length > 0 ? projectPreviews : ["/images/project-nigeria.png", "/images/project-modern-new.png"];
-    const finalVideo = videoPreview || "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c022f733f3f364582998568600868f72&profile_id=165&oauth2_token_id=57447761";
+      onAddStory(newTestimonial);
+      setIsSubmitting(false);
 
-    const customStory: Testimonial = {
-      id: `custom-${Date.now()}`,
-      name: formData.name,
-      location: formData.location,
-      projectType: formData.projectType,
-      quote: formData.quote,
-      rating: formData.rating,
-      profileImage: finalProfile,
-      projectImages: finalProjectImages,
-      videoUrl: finalVideo,
-      fullStory: formData.fullStory || `A luxury custom-engineered project crafted specifically in ${formData.location}. Build completed meticulously.`,
-      budget: formData.budget || "₦500,000,000 - ₦1,000,000,000",
-      timeframe: formData.timeframe || "16 Weeks",
-    };
+      // Trigger celebrate confetti
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
 
-    onAddStory(customStory);
-    setIsSubmitting(false);
-
-    //Confetti burst
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#57D6FF", "#009DFF", "#ffffff"],
-    });
-
-    onClose();
+      onClose();
+    }, 1800);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-slate-950/85 backdrop-blur-xl">
       <div className="absolute inset-0 cursor-pointer" onClick={onClose} />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        className="relative w-full max-w-2xl bg-[#020813] text-white rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10 glass-card-dark flex flex-col max-h-[90vh]"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="relative w-full max-w-xl bg-[#020813] text-white rounded-3xl overflow-hidden border border-white/10 shadow-2xl z-10 flex flex-col max-h-[85vh] glass-card-dark text-left"
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 z-20 p-2 rounded-full bg-slate-900/60 border border-white/10 text-white hover:bg-[#57D6FF] hover:text-[#071A35] transition-all duration-300 cursor-pointer"
-          aria-label="Close dialog"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        {/* Modal Header */}
-        <div className="p-6 border-b border-white/5 bg-slate-900/30 text-left">
-          <div className="flex items-center gap-2 text-[#57D6FF] mb-1">
-            <Sparkles className="w-4 h-4 animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-widest">Share Your ADLAT Journey</span>
+        {/* Header */}
+        <div className="p-6 border-b border-white/5 flex items-center justify-between">
+          <div>
+            <h3 className="font-serif text-lg sm:text-xl font-bold text-white">Share Your Journey</h3>
+            <span className="text-[10px] text-slate-400 font-medium uppercase tracking-widest mt-1 block">Step {step} of 3</span>
           </div>
-          <h3 className="font-serif text-2xl font-bold tracking-tight text-white">
-            Publish Commission Review
-          </h3>
-          <span className="text-[10px] text-slate-500 uppercase tracking-wider block mt-1">
-            Step {step} of 3
-          </span>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-white/5 text-slate-400 hover:text-white transition-all cursor-pointer"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* Form content (scrollable) */}
-        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 text-left">
-          {step === 1 && (
-            <div className="space-y-5">
-              {/* Star Rating selection */}
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">Rate Experience</label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((stars) => (
-                    <button
-                      type="button"
-                      key={stars}
-                      onClick={() => handleStarClick(stars)}
-                      className="p-1 rounded hover:scale-110 transition-transform cursor-pointer"
-                    >
-                      <Star
-                        className={`w-6 h-6 ${
-                          stars <= formData.rating
-                            ? "fill-[#57D6FF] text-[#57D6FF]"
-                            : "text-slate-600 hover:text-slate-400"
-                        }`}
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
+        {/* Progress Bar */}
+        <div className="w-full h-1 bg-slate-900">
+          <div
+            className="h-full bg-[#57D6FF] transition-all duration-300"
+            style={{ width: `${(step / 3) * 100}%` }}
+          />
+        </div>
 
-              {/* Name & Location */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {/* Form Body */}
+        <form onSubmit={handleSubmit} className="p-6 overflow-y-auto flex-1 space-y-5">
+          {step === 1 && (
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#57D6FF] mb-2">Owner & Project Information</h4>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Client Name */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Full Name</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Full Name *</label>
                   <input
                     required
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="e.g. Alexander Mercer"
+                    placeholder="e.g. Olumide Adebayo"
                     className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
                   />
                 </div>
+
+                {/* Location */}
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Location</label>
                   <input
-                    required
                     type="text"
                     name="location"
                     value={formData.location}
                     onChange={handleInputChange}
-                    placeholder="e.g. Malibu, CA"
+                    placeholder="e.g. Ikoyi, Lagos"
                     className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
                   />
                 </div>
               </div>
 
-              {/* Commission details */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Project type / Title */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Project Type</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Project Name *</label>
                   <input
                     required
                     type="text"
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    placeholder="e.g. Infinity Overflow"
+                    placeholder="e.g. The Horizon Pool"
                     className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
                   />
                 </div>
+
+                {/* Star Rating */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Total Budget</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Rating</label>
+                  <select
+                    name="rating"
+                    value={formData.rating}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                  >
+                    <option value={5}>5.0 - Absolutely Exceptional</option>
+                    <option value={4}>4.0 - Very Good</option>
+                    <option value={3}>3.0 - Good Work</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Budget Range */}
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Budget Range</label>
                   <input
                     type="text"
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    placeholder="e.g. ₦750M - ₦1B"
+                    placeholder="e.g. ₦800,000,000"
                     className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
                   />
                 </div>
+
+                {/* Build Timeframe */}
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Build Timeframe</label>
                   <input

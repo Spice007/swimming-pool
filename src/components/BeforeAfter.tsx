@@ -8,7 +8,13 @@ import {
   Calendar, 
   ChevronLeft, 
   ChevronRight,
-  X
+  X,
+  Maximize2,
+  Minimize2,
+  Split,
+  LayoutGrid,
+  History,
+  Sparkles
 } from "lucide-react";
 
 interface Project {
@@ -55,20 +61,7 @@ const projects: Project[] = [
     location: "Ikoyi, Lagos",
     year: "2025"
   },
-  {
-    id: 3,
-    title: "Victoria Island Infinity Horizon",
-    category: "Complete Estate Design",
-    description: "A bare, grassy backyard is transformed into a premier architectural anchor point, featuring a stunning flush-deck pool that elevates the entire estate.",
-    beforeVideo: "/videos/WhatsApp Video 2026-06-21 at 19.18.17.mp4",
-    afterImg: "/images/WhatsApp Image 2026-06-21 at 22.39.32 (17).jpeg",
-    timeframe: "14 Weeks",
-    area: "750 SQM",
-    value: "55M NGN",
-    finish: "Infinity Overflow",
-    location: "Victoria Island, Lagos",
-    year: "2026"
-  },
+
   {
     id: 4,
     title: "Rectangular Pool Restoration",
@@ -129,7 +122,7 @@ export default function BeforeAfter() {
     setIsMounted(true);
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setVisibleCards(3);
+        setVisibleCards(2);
       } else if (window.innerWidth >= 768) {
         setVisibleCards(2);
       } else {
@@ -238,12 +231,12 @@ export default function BeforeAfter() {
         }
         @media (min-width: 768px) {
           .carousel-card-container-ba {
-            width: calc((100% - 1 * 24px) / 2);
+            width: calc((100% - 1 * 32px) / 2);
           }
         }
         @media (min-width: 1024px) {
           .carousel-card-container-ba {
-            width: calc((100% - 2 * 32px) / 3);
+            width: calc((100% - 1 * 32px) / 2);
           }
         }
       `}} />
@@ -438,12 +431,12 @@ function BeforeAfterCard({ project, index }: { project: Project; index: number }
       exit={{ opacity: 0, scale: 0.95 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="bg-[#080E1C] border border-[#172544] rounded-[24px] p-5 sm:p-6 flex flex-col justify-between w-full h-full shadow-2xl transition-all duration-500 hover:border-[#1E3058] group/card relative"
+      className="flex flex-col justify-between w-full h-full group/card relative"
     >
       {/* 1. Drag Slider Frame */}
       <div
         ref={containerRef}
-        className="relative aspect-[0.85/1] w-full rounded-2xl overflow-hidden border border-white/10 select-none cursor-ew-resize bg-slate-950 group-hover/card:border-white/20 transition-colors duration-300"
+        className="relative aspect-[12/11] w-full rounded-2xl overflow-hidden select-none cursor-ew-resize bg-slate-950"
         onMouseDown={handleStart}
         onTouchStart={handleStart}
         onClick={(e) => {
@@ -491,19 +484,7 @@ function BeforeAfterCard({ project, index }: { project: Project; index: number }
         <div
           className="absolute top-0 bottom-0 z-20 w-[1.5px] bg-white/70 pointer-events-none"
           style={{ left: `${sliderPosition}%` }}
-        >
-          {/* Knob (Matching Screenshot: Solid dark circle with white border containing chevrons) */}
-          <div 
-            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#0A1122] border-2 border-white shadow-[0_0_15px_rgba(0,0,0,0.5)] flex items-center justify-center pointer-events-auto cursor-ew-resize hover:scale-105 active:scale-95 transition-transform duration-150 text-white"
-            onMouseDown={handleStart}
-            onTouchStart={handleStart}
-          >
-            <div className="flex gap-1 items-center justify-center select-none">
-              <ChevronLeft className="w-3.5 h-3.5 stroke-[2.5]" />
-              <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </div>
-          </div>
-        </div>
+        />
       </div>
 
       {/* 2. Text Details */}
@@ -546,6 +527,8 @@ function BeforeAfterModal({
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [viewMode, setViewMode] = useState<"slider" | "side-by-side" | "before" | "after">("slider");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
@@ -603,7 +586,9 @@ function BeforeAfterModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-        className="relative w-full max-w-5xl bg-[#080E1C] border border-[#172544] rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row gap-8 shadow-2xl overflow-y-auto max-h-[95vh] md:max-h-[90vh]"
+        className={`relative w-full bg-[#080E1C] border border-[#172544] rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row gap-8 shadow-2xl overflow-y-auto max-h-[95vh] md:max-h-[90vh] transition-all duration-500 ${
+          isExpanded || viewMode === "side-by-side" ? "max-w-6xl" : "max-w-5xl"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -615,120 +600,263 @@ function BeforeAfterModal({
           <X className="w-5 h-5" />
         </button>
 
-        {/* Left Side: Large Slider */}
-        <div className="flex-1 flex items-center justify-center min-h-[300px] sm:min-h-[400px]">
-          <div
-            ref={containerRef}
-            className="relative aspect-[0.85/1] w-full max-w-[420px] rounded-2xl overflow-hidden border border-white/10 select-none cursor-ew-resize bg-slate-950 shadow-2xl"
-            onMouseDown={handleStart}
-            onTouchStart={handleStart}
-          >
-            {/* After Image */}
-            <Image
-              src={project.afterImg}
-              alt={`After - ${project.title}`}
-              fill
-              sizes="(max-width: 1024px) 90vw, 500px"
-              className="object-cover pointer-events-none select-none"
-              draggable={false}
-              priority
-            />
-            <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
-              After
+        {/* Left Side: Media Workspace */}
+        <div className="flex-1 flex flex-col gap-5">
+          {/* Header Controls for Media Workspace */}
+          <div className="flex flex-row items-center justify-between gap-4 w-full pr-12 md:pr-0">
+            {/* View Mode Tabs Selector */}
+            <div className="flex flex-row items-center gap-4 overflow-x-auto no-scrollbar flex-nowrap py-1">
+              {[
+                { id: "slider", label: "Slider", icon: Split },
+                { id: "side-by-side", label: "Side-by-Side", icon: LayoutGrid },
+                { id: "before", label: "Before", icon: History },
+                { id: "after", label: "After", icon: Sparkles }
+              ].map((tab) => {
+                const Icon = tab.icon;
+                const isActive = viewMode === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setViewMode(tab.id as any);
+                      // Proactive expansion logic for side-by-side mode on desktop
+                      if (tab.id === "side-by-side") {
+                        setIsExpanded(true);
+                      }
+                    }}
+                    className={`flex items-center gap-1.5 relative py-1 text-[9px] font-sans font-bold uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "text-white"
+                        : "text-slate-500 hover:text-slate-300"
+                    }`}
+                  >
+                    <Icon className="w-3 h-3" />
+                    <span>{tab.label}</span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTabIndicator"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0052FF]"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Before Video */}
-            <div
-              className="absolute inset-0 z-10 pointer-events-none"
-              style={{
-                clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
-              }}
+            {/* Expand / Collapse Details Button */}
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="flex items-center gap-1.5 text-[9px] font-sans font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-white transition-colors duration-300 cursor-pointer whitespace-nowrap"
+              title={isExpanded ? "Show Details" : "Expand Media View"}
             >
-              <video
-                src={project.beforeVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-              />
-              <div className="absolute top-4 left-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A1122]/90 border border-white/5 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-slate-300 pointer-events-none">
-                Before
+              {isExpanded ? (
+                <>
+                  <Minimize2 className="w-3 h-3" />
+                  <span>Show Details</span>
+                </>
+              ) : (
+                <>
+                  <Maximize2 className="w-3 h-3" />
+                  <span>Maximize View</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Media Content Container */}
+          <div className="flex-1 flex items-center justify-center">
+            {viewMode === "side-by-side" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full py-2">
+                {/* Before Box */}
+                <div className="relative aspect-[1.25/1] w-full rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-2xl transition-all duration-300 hover:border-white/20">
+                  <video
+                    src={project.beforeVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+                  />
+                  <div className="absolute top-4 left-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A1122]/90 border border-white/5 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-slate-300 pointer-events-none">
+                    Before
+                  </div>
+                </div>
+
+                {/* After Box */}
+                <div className="relative aspect-[1.25/1] w-full rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-2xl transition-all duration-300 hover:border-white/20">
+                  <Image
+                    src={project.afterImg}
+                    alt={`After - ${project.title}`}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 500px"
+                    className="object-cover pointer-events-none select-none"
+                    draggable={false}
+                    priority
+                  />
+                  <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+                    After
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Slider Handle Line */}
-            <div
-              className="absolute top-0 bottom-0 z-20 w-[1.5px] bg-white/70 pointer-events-none"
-              style={{ left: `${sliderPosition}%` }}
-            >
-              {/* Knob */}
-              <div 
-                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#0A1122] border-2 border-white shadow-[0_0_15px_rgba(0,0,0,0.5)] flex items-center justify-center pointer-events-auto cursor-ew-resize hover:scale-105 active:scale-95 transition-transform duration-150 text-white"
+            {viewMode === "slider" && (
+              <div
+                ref={containerRef}
+                className={`relative w-full rounded-2xl overflow-hidden border border-white/10 select-none cursor-ew-resize bg-slate-950 shadow-2xl transition-all duration-500 ${
+                  isExpanded ? "aspect-[1.5/1] max-w-[850px]" : "aspect-[1.1/1] max-w-[550px]"
+                }`}
                 onMouseDown={handleStart}
                 onTouchStart={handleStart}
               >
-                <div className="flex gap-1 items-center justify-center select-none">
-                  <ChevronLeft className="w-4 h-4 stroke-[2.5]" />
-                  <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+                {/* After Image */}
+                <Image
+                  src={project.afterImg}
+                  alt={`After - ${project.title}`}
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 800px"
+                  className="object-cover pointer-events-none select-none"
+                  draggable={false}
+                  priority
+                />
+                <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+                  After
+                </div>
+
+                {/* Before Video */}
+                <div
+                  className="absolute inset-0 z-10 pointer-events-none"
+                  style={{
+                    clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+                  }}
+                >
+                  <video
+                    src={project.beforeVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+                  />
+                  <div className="absolute top-4 left-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A1122]/90 border border-white/5 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-slate-300 pointer-events-none">
+                    Before
+                  </div>
+                </div>
+
+                {/* Slider Handle Line */}
+                <div
+                  className="absolute top-0 bottom-0 z-20 w-[1.5px] bg-white/70 pointer-events-none"
+                  style={{ left: `${sliderPosition}%` }}
+                >
+                  {/* Knob */}
+                  <div 
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#0A1122] border-2 border-white shadow-[0_0_15px_rgba(0,0,0,0.5)] flex items-center justify-center pointer-events-auto cursor-ew-resize hover:scale-105 active:scale-95 transition-transform duration-150 text-white"
+                    onMouseDown={handleStart}
+                    onTouchStart={handleStart}
+                  >
+                    <div className="flex gap-1 items-center justify-center select-none">
+                      <ChevronLeft className="w-4 h-4 stroke-[2.5]" />
+                      <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {viewMode === "before" && (
+              <div className={`relative w-full rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-2xl transition-all duration-500 ${
+                isExpanded ? "aspect-[1.5/1] max-w-[850px]" : "aspect-[1.1/1] max-w-[550px]"
+              }`}>
+                <video
+                  src={project.beforeVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+                />
+                <div className="absolute top-4 left-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A1122]/90 border border-white/5 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-slate-300 pointer-events-none">
+                  Before
+                </div>
+              </div>
+            )}
+
+            {viewMode === "after" && (
+              <div className={`relative w-full rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-2xl transition-all duration-500 ${
+                isExpanded ? "aspect-[1.5/1] max-w-[850px]" : "aspect-[1.1/1] max-w-[550px]"
+              }`}>
+                <Image
+                  src={project.afterImg}
+                  alt={`After - ${project.title}`}
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 800px"
+                  className="object-cover pointer-events-none select-none"
+                  draggable={false}
+                  priority
+                />
+                <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+                  After
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Right Side: Details & Specs */}
-        <div className="w-full md:w-[380px] flex flex-col justify-between py-2">
-          <div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#0052FF]">
-              — TRANSFORMATIONS
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-2 leading-tight">
-              {project.title}
-            </h3>
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 mt-2.5 block">
-              Category: {project.category}
-            </span>
-            <p className="text-slate-400 font-light text-sm leading-relaxed mt-4">
-              {project.description}
-            </p>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-6">
-            {/* Location & Year */}
-            <div className="flex items-center gap-4 text-xs text-slate-300 font-medium font-sans">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-[#0052FF]" />
-                {project.location}
+        {!isExpanded && (
+          <div className="w-full md:w-[380px] flex flex-col justify-between py-2 transition-all duration-500">
+            <div>
+              <span className="text-[9px] font-bold uppercase tracking-widest text-[#0052FF]">
+                — TRANSFORMATIONS
               </span>
-              <span className="text-slate-700">|</span>
-              <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-[#0052FF]" />
-                {project.year}
+              <h3 className="font-serif text-lg sm:text-xl font-bold text-white mt-1.5 leading-tight">
+                {project.title}
+              </h3>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2 block">
+                Category: {project.category}
               </span>
+              <p className="text-slate-400 font-light text-xs leading-relaxed mt-3">
+                {project.description}
+              </p>
             </div>
 
-            {/* Spec Grid */}
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
-              <div>
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest block">TIMEFRAME</span>
-                <span className="text-sm font-semibold text-white mt-1 block">{project.timeframe}</span>
+            <div className="mt-6 flex flex-col gap-4">
+              {/* Location & Year */}
+              <div className="flex items-center gap-3 text-[11px] text-slate-300 font-medium font-sans">
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-[#0052FF]" />
+                  {project.location}
+                </span>
+                <span className="text-slate-700">|</span>
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-3 h-3 text-[#0052FF]" />
+                  {project.year}
+                </span>
               </div>
-              <div>
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest block">POOL AREA</span>
-                <span className="text-sm font-semibold text-white mt-1 block">{project.area}</span>
-              </div>
-              <div>
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest block">PROJECT VALUE</span>
-                <span className="text-sm font-semibold text-[#0052FF] mt-1 block">{project.value}</span>
-              </div>
-              <div>
-                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest block">PREMIUM FINISH</span>
-                <span className="text-sm font-semibold text-white mt-1 block">{project.finish}</span>
+
+              {/* Spec Grid */}
+              <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/5">
+                <div>
+                  <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest block">TIMEFRAME</span>
+                  <span className="text-[11px] font-semibold text-white mt-0.5 block">{project.timeframe}</span>
+                </div>
+                <div>
+                  <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest block">POOL AREA</span>
+                  <span className="text-[11px] font-semibold text-white mt-0.5 block">{project.area}</span>
+                </div>
+                <div>
+                  <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest block">PROJECT VALUE</span>
+                  <span className="text-[11px] font-semibold text-[#0052FF] mt-0.5 block">{project.value}</span>
+                </div>
+                <div>
+                  <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest block">PREMIUM FINISH</span>
+                  <span className="text-[11px] font-semibold text-white mt-0.5 block">{project.finish}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </motion.div>
     </motion.div>
   );

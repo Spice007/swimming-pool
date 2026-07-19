@@ -63,10 +63,10 @@ const serviceIcons = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 sm:py-32 bg-[#020813] text-white relative overflow-hidden">
+    <section id="services" className="py-16 sm:py-24 lg:py-32 bg-[#020813] text-white relative overflow-hidden">
       
       {/* Background Lights */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#009DFF]/3 blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#0A5C9E]/3 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -74,16 +74,16 @@ export default function Services() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#009DFF]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#009DFF]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0A5C9E]" />
+              <span className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.25em] text-[#0A5C9E]">
                 OUR SOLUTIONS
               </span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
               Complete Solutions. <br />
-              Exceptional <span className="text-[#009DFF] italic">Results.</span>
+              Exceptional <span className="text-[#0A5C9E] italic">Results.</span>
             </h2>
-            <div className="w-32 h-0.5 bg-[#009DFF] mt-4" />
+            <div className="w-32 h-0.5 bg-[#0A5C9E] mt-4" />
           </div>
 
           <div className="md:max-w-md lg:max-w-lg">
@@ -94,7 +94,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, idx) => (
             <ServiceCard key={idx} service={service} index={idx} />
           ))}
@@ -131,13 +131,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       {/* Card Content Row */}
       <div className="flex gap-4 items-start relative z-10 px-1">
         {/* Left Icon Container (Clean, no background, no border) */}
-        <div className="text-[#009DFF] shrink-0 w-8 h-8 flex items-center justify-center mt-1">
+        <div className="text-[#0A5C9E] shrink-0 w-8 h-8 flex items-center justify-center mt-1">
           {serviceIcons[index]}
         </div>
         
         {/* Middle Text Block */}
         <div className="flex-1 space-y-1.5">
-          <h3 className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight leading-snug transition-colors duration-300 group-hover:text-[#57D6FF]">
+          <h3 className="font-serif text-lg sm:text-xl font-bold text-white tracking-tight leading-snug transition-colors duration-300 group-hover:text-[#5CC6EC]">
             {service.title}
           </h3>
           <p className="text-slate-400 font-light text-[13px] sm:text-[14px] leading-relaxed">

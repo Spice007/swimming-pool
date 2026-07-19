@@ -162,11 +162,11 @@ const pillLabels: Record<string, string> = {
 };
 
 const pillIcons: Record<string, React.ReactNode> = {
-  "Luxury Pool": <Gem className="w-3.5 h-3.5 text-[#009DFF]" />,
-  "Residential Pool": <Home className="w-3.5 h-3.5 text-[#009DFF]" />,
-  "Commercial Pool": <Building2 className="w-3.5 h-3.5 text-[#009DFF]" />,
-  "Custom Pool Design": <Compass className="w-3.5 h-3.5 text-[#009DFF]" />,
-  "Pool Renovation": <RefreshCw className="w-3.5 h-3.5 text-[#009DFF]" />
+  "Luxury Pool": <Gem className="w-3.5 h-3.5 text-[#0A5C9E]" />,
+  "Residential Pool": <Home className="w-3.5 h-3.5 text-[#0A5C9E]" />,
+  "Commercial Pool": <Building2 className="w-3.5 h-3.5 text-[#0A5C9E]" />,
+  "Custom Pool Design": <Compass className="w-3.5 h-3.5 text-[#0A5C9E]" />,
+  "Pool Renovation": <RefreshCw className="w-3.5 h-3.5 text-[#0A5C9E]" />
 };
 
 export default function PortfolioGrid() {
@@ -225,37 +225,37 @@ export default function PortfolioGrid() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-white text-[#071A35] relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-24 bg-white text-[#6B7280] relative overflow-hidden">
       
       {/* Subtle Background Ambient Lighting to elevate design */}
-      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#009DFF]/2 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#57D6FF]/2 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#0A5C9E]/2 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#5CC6EC]/2 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header with Wavy underline and Description */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-8 sm:mb-12">
           <div className="md:col-span-7">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#009DFF] block mb-3">
+            <span className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.25em] text-[#0A5C9E] block mb-3">
               PORTFOLIO
             </span>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A35] leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-[#0F172A] leading-[1.1]">
               Our Recent <br />
-              <span className="text-[#009DFF] italic">Pool Projects</span>
+              <span className="text-[#0A5C9E] italic">Pool Projects</span>
             </h2>
-            <svg className="w-24 h-2.5 text-[#009DFF] mt-2.5" viewBox="0 0 100 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-24 h-2.5 text-[#0A5C9E] mt-2.5" viewBox="0 0 100 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 5C10 5 15 2 25 5C35 8 40 5 50 5C60 5 65 2 75 5C85 8 90 5 100 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
           </div>
           <div className="md:col-span-5">
-            <p className="text-[#071A35]/60 font-light text-sm sm:text-base leading-relaxed">
-              Explore some of our completed pool designs, construction work, and luxury renovations.
+            <p className="text-[#6B7280] font-light text-base md:text-[18px] leading-[1.85]">
+              Every design is custom. Discover how we turn standard backyards into world-class residential and commercial masterpieces.
             </p>
           </div>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-6 flex-nowrap -mx-6 px-6 lg:mx-0 lg:px-0 mb-12">
+        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-6 flex-nowrap -mx-6 px-6 lg:mx-0 lg:px-0 mb-8 sm:mb-12">
           {categories.map((category) => (
             <button
               key={category}
@@ -266,8 +266,8 @@ export default function PortfolioGrid() {
               }}
               className={`px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 flex items-center gap-2 shrink-0 border cursor-pointer hover:scale-105 active:scale-95 ${
                 activeFilter === category
-                  ? "bg-[#071A35] text-white border-[#071A35] shadow-md"
-                  : "bg-white border-slate-200 text-slate-500 hover:text-[#071A35] hover:border-slate-300"
+                  ? "bg-[#0F172A] text-white border-[#0F172A] shadow-md"
+                  : "bg-white border-slate-200 text-slate-500 hover:text-[#0F172A] hover:border-slate-300"
               }`}
             >
               {filterIcons[category]}
@@ -302,7 +302,7 @@ export default function PortfolioGrid() {
           {/* Left Arrow (Overlapping edge) */}
           <button
             onClick={scrollPrev}
-            className="absolute left-2 md:-left-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] hover:bg-slate-50 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 opacity-90 hover:opacity-100"
+            className="hidden md:flex absolute left-2 md:-left-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] hover:bg-slate-50 shadow-lg items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 opacity-90 hover:opacity-100"
             aria-label="Previous projects"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -311,7 +311,7 @@ export default function PortfolioGrid() {
           {/* Right Arrow (Overlapping edge) */}
           <button
             onClick={scrollNext}
-            className="absolute right-2 md:-right-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#071A35] hover:bg-slate-50 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 opacity-90 hover:opacity-100"
+            className="hidden md:flex absolute right-2 md:-right-6 top-[45%] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-slate-200 text-[#0F172A] hover:bg-slate-50 shadow-lg items-center justify-center cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 opacity-90 hover:opacity-100"
             aria-label="Next projects"
           >
             <ChevronRight className="w-5 h-5" />
@@ -327,7 +327,7 @@ export default function PortfolioGrid() {
                 onClick={() => scrollToCard(idx)}
                 className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                   activeDot === idx
-                    ? "bg-[#009DFF] w-6"
+                    ? "bg-[#0A5C9E] w-6"
                     : "bg-slate-300 hover:bg-slate-400 w-2.5"
                 }`}
                 aria-label={`Go to project ${idx + 1}`}
@@ -455,7 +455,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
       {/* Inset White Detail Card (matching reference image) */}
       <div className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl shadow-lg p-4 sm:p-5 flex items-center justify-between gap-4 z-20 transition-transform duration-300 group-hover:scale-[1.02]">
         <div className="overflow-hidden">
-          <h3 className="font-serif text-[#071A35] text-[15px] sm:text-[17px] font-bold truncate">
+          <h3 className="font-serif text-[#0F172A] text-[15px] sm:text-[17px] font-bold truncate">
             {project.name}
           </h3>
           <div className="flex items-center gap-1.5 mt-1 text-slate-500 font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider">
@@ -465,8 +465,8 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
         </div>
         
         {/* Soft-blue circle arrow-right button */}
-        <div className="w-10 h-10 rounded-full bg-[#E0F2FE] hover:bg-[#bae6fd] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shrink-0">
-          <ArrowRight className="w-4 h-4 text-[#009DFF]" />
+        <div className="w-10 h-10 rounded-full bg-[#0A5C9E]/10 hover:bg-[#0A5C9E]/20 flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shrink-0">
+          <ArrowRight className="w-4 h-4 text-[#0A5C9E]" />
         </div>
       </div>
     </motion.div>
@@ -497,7 +497,7 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-20 p-2.5 rounded-full bg-slate-900/60 border border-white/10 text-white hover:bg-[#009DFF] hover:text-white hover:border-[#57D6FF] transition-all duration-300"
+          className="absolute top-6 right-6 z-20 p-2.5 rounded-full bg-slate-900/60 border border-white/10 text-white hover:bg-[#0A5C9E] hover:text-white hover:border-[#5CC6EC] transition-all duration-300"
           aria-label="Close details"
         >
           <X className="w-5 h-5" />
@@ -523,7 +523,7 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
           </div>
 
           <div className="absolute bottom-6 left-6 sm:left-10 z-10">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] bg-[#071A35]/80 px-4 py-1.5 rounded-full border border-[#57D6FF]/35 backdrop-blur-md inline-block mb-3">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#5CC6EC] bg-[#0F172A]/80 px-4 py-1.5 rounded-full border border-[#5CC6EC]/35 backdrop-blur-md inline-block mb-3">
               {project.category}
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
@@ -538,7 +538,7 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
           {/* Left/Middle Column (Description & Features) */}
           <div className="lg:col-span-2 space-y-8">
             <div>
-              <h3 className="text-lg font-serif font-bold text-[#57D6FF] mb-3 flex items-center gap-2">
+              <h3 className="text-lg font-serif font-bold text-[#5CC6EC] mb-3 flex items-center gap-2">
                 <Compass className="w-5 h-5" /> Project Overview
               </h3>
               <p className="text-slate-300 font-light text-sm sm:text-base leading-relaxed">
@@ -547,13 +547,13 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
             </div>
 
             <div>
-              <h3 className="text-lg font-serif font-bold text-[#57D6FF] mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-serif font-bold text-[#5CC6EC] mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5" /> Key Architectural Elements
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300 font-light">
                 {project.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#009DFF] mt-2 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0A5C9E] mt-2 shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -562,7 +562,7 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
 
             {project.gallery && project.gallery.length > 0 && (
               <div className="pt-4">
-                <h3 className="text-lg font-serif font-bold text-[#57D6FF] mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-serif font-bold text-[#5CC6EC] mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5" /> Construction & Craftsmanship Gallery
                 </h3>
                 <div className="flex flex-wrap gap-4">
@@ -594,7 +594,7 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
 
           {/* Right Column (Specifications & Materials) */}
           <div className="space-y-6 lg:border-l lg:border-white/10 lg:pl-8">
-            <h3 className="text-lg font-serif font-bold text-[#57D6FF] flex items-center gap-2">
+            <h3 className="text-lg font-serif font-bold text-[#5CC6EC] flex items-center gap-2">
               <Calendar className="w-5 h-5" /> Specifications
             </h3>
 
@@ -610,13 +610,13 @@ function ProjectDetailModal({ project, onClose }: { project: Project; onClose: (
               </div>
               <div className="flex justify-between py-2.5 text-sm">
                 <span className="text-slate-400 font-light">Timeframe</span>
-                <span className="font-semibold text-[#57D6FF]">{project.timeframe}</span>
+                <span className="font-semibold text-[#5CC6EC]">{project.timeframe}</span>
               </div>
             </div>
 
             {/* Materials List */}
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#57D6FF] font-semibold block mb-3">
+              <span className="text-xs uppercase tracking-widest text-[#5CC6EC] font-semibold block mb-3">
                 Curation & Materials
               </span>
               <div className="flex flex-wrap gap-2">

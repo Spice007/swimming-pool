@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Manrope, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -30,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} scroll-smooth`}
+      className={`${manrope.variable} ${cormorant.variable} scroll-smooth`}
     >
-      <body className="font-sans bg-[#020813] text-[#0F172A] min-h-screen selection:bg-[#57D6FF]/30 selection:text-[#071A35]">
+      <body className="font-sans bg-white text-[#6B7280] min-h-screen selection:bg-[#0A5C9E]/20 selection:text-[#0F172A]">
         <SmoothScroll>
           <CustomCursor />
           {children}

@@ -224,7 +224,7 @@ export default function BeforeAfter() {
   const showNavigation = isMounted && projects.length > visibleCards;
 
   return (
-    <section id="transformation" className="py-24 sm:py-32 bg-[#020813] text-white relative overflow-hidden">
+    <section id="transformation" className="py-16 sm:py-24 lg:py-32 bg-[#020813] text-white relative overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: `
         .carousel-card-container-ba {
           width: 100%;
@@ -484,7 +484,19 @@ function BeforeAfterCard({ project, index }: { project: Project; index: number }
         <div
           className="absolute top-0 bottom-0 z-20 w-[1.5px] bg-white/70 pointer-events-none"
           style={{ left: `${sliderPosition}%` }}
-        />
+        >
+          {/* Knob */}
+          <div 
+            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-[#0A1122]/90 border-2 border-white shadow-[0_0_15px_rgba(0,0,0,0.5)] flex items-center justify-center pointer-events-auto cursor-ew-resize hover:scale-105 active:scale-95 transition-transform duration-150 text-white"
+            onMouseDown={handleStart}
+            onTouchStart={handleStart}
+          >
+            <div className="flex gap-1 items-center justify-center select-none">
+              <ChevronLeft className="w-3.5 h-3.5 stroke-[2.5]" />
+              <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* 2. Text Details */}

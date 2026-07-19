@@ -131,7 +131,7 @@ export default function Navbar() {
             >
               <div className="flex items-center gap-2">
                 <span className="font-serif text-sm font-bold tracking-widest">ADLAT</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC] animate-pulse" />
               </div>
 
               <div className="flex items-center gap-2.5">
@@ -155,7 +155,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between pb-3 border-b border-white/5">
                 <div className="flex items-center gap-2">
                   <span className="font-serif text-sm font-bold tracking-widest">ADLAT</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC]" />
                 </div>
                 <button
                   onClick={(e) => {
@@ -178,8 +178,8 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href, link.name)}
-                    className={`text-lg font-serif tracking-wide py-1 transition-colors ${
-                      activeLink === link.name ? "text-[#57D6FF]" : "text-slate-400 hover:text-white"
+                    className={`text-base font-sans tracking-widest py-1 transition-colors uppercase ${
+                      activeLink === link.name ? "text-[#5CC6EC] font-semibold" : "text-slate-400 hover:text-white"
                     }`}
                   >
                     {link.name}
@@ -192,7 +192,7 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   onClick={(e) => handleLinkClick(e, "#contact", "Contact")}
-                  className="w-full text-center py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest bg-[#57D6FF] text-[#071A35] hover:bg-[#009DFF] hover:text-white transition-all duration-300"
+                  className="w-full text-center py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest bg-[#5CC6EC] text-[#0F172A] hover:bg-[#0A5C9E] hover:text-white transition-all duration-300"
                 >
                   Get a Quote
                 </a>
@@ -211,7 +211,7 @@ export default function Navbar() {
               className="flex items-center justify-center gap-2.5 w-full"
             >
               <span className="font-serif text-sm font-bold tracking-widest text-white">ADLAT</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC] animate-pulse" />
             </motion.div>
           )}
 
@@ -234,7 +234,7 @@ export default function Navbar() {
                 <span className="font-serif text-sm font-bold tracking-widest text-white transition-colors duration-300">
                   ADLAT
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] group-hover:scale-150 transition-transform duration-300" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC] group-hover:scale-150 transition-transform duration-300" />
               </a>
 
               {/* Nav Links */}
@@ -246,7 +246,7 @@ export default function Navbar() {
                     onClick={(e) => handleLinkClick(e, link.href, link.name)}
                     className={`relative py-1.5 text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 ${
                       activeLink === link.name
-                        ? "text-[#57D6FF] font-bold"
+                        ? "text-[#5CC6EC] font-bold"
                         : "text-slate-200 hover:text-white"
                     }`}
                   >
@@ -254,7 +254,7 @@ export default function Navbar() {
                     {activeLink === link.name && (
                       <motion.span
                         layoutId="navUnderline"
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-[#57D6FF] rounded-full"
+                        className="absolute bottom-0 left-0 w-full h-[1px] bg-[#5CC6EC] rounded-full"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -267,11 +267,11 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   onClick={(e) => handleLinkClick(e, "#contact", "Contact")}
-                  className="relative overflow-hidden inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white text-[#071A35] group border border-white/10 hover:border-[#57D6FF] hover:shadow-[0_0_15px_rgba(87,214,255,0.4)] transition-all duration-300 hover:scale-105"
+                  className="relative overflow-hidden inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white text-[#0F172A] group border border-white/10 hover:border-[#5CC6EC] hover:shadow-[0_0_15px_rgba(92,198,236,0.4)] transition-all duration-300 hover:scale-105"
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Get a Quote</span>
                   <ArrowUpRight className="w-3.5 h-3.5 relative z-10 transition-colors duration-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  <div className="absolute inset-0 bg-[#009DFF] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out" />
+                  <div className="absolute inset-0 bg-[#0A5C9E] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out" />
                 </a>
               </div>
             </motion.div>

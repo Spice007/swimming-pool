@@ -129,7 +129,7 @@ export default function Hero() {
         }}
         className="absolute left-[6%] top-[38%] z-20 hidden md:flex flex-col gap-1 p-5 rounded-2xl glass-nav border border-white/10 shadow-2xl backdrop-blur-lg w-48 text-left pointer-events-none"
       >
-        <span className="font-serif text-3xl font-extrabold text-[#57D6FF] tracking-tight">500+</span>
+        <span className="font-serif text-3xl font-extrabold text-[#5CC6EC] tracking-tight">500+</span>
         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200">Projects Completed</span>
         <span className="text-[9px] text-slate-400 font-light leading-relaxed">Delivering aquatic luxury environments globally.</span>
       </motion.div>
@@ -145,7 +145,7 @@ export default function Hero() {
         }}
         className="absolute right-[6%] top-[48%] z-20 hidden md:flex flex-col gap-1 p-5 rounded-2xl glass-nav border border-white/10 shadow-2xl backdrop-blur-lg w-48 text-left pointer-events-none"
       >
-        <span className="font-serif text-3xl font-extrabold text-[#57D6FF] tracking-tight">20+</span>
+        <span className="font-serif text-3xl font-extrabold text-[#5CC6EC] tracking-tight">20+</span>
         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200">Years Experience</span>
         <span className="text-[9px] text-slate-400 font-light leading-relaxed">Sculpting high-end private structures.</span>
       </motion.div>
@@ -161,8 +161,8 @@ export default function Hero() {
         }}
         className="absolute right-[12%] top-[20%] z-20 hidden lg:flex flex-col gap-1 p-5 rounded-2xl glass-nav border border-white/10 shadow-2xl backdrop-blur-lg w-52 text-left pointer-events-none"
       >
-        <div className="flex items-center gap-1.5 text-[#57D6FF] mb-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
+        <div className="flex items-center gap-1.5 text-[#5CC6EC] mb-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC] animate-pulse" />
           <span className="text-[9px] font-bold uppercase tracking-widest">Award-Winning</span>
         </div>
         <span className="font-serif text-base font-bold text-white leading-tight">Design Studio</span>
@@ -181,14 +181,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 shadow-[0_0_15px_rgba(87,214,255,0.08)] backdrop-blur-md mb-8"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC] animate-pulse" />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#5CC6EC]">
             Aesthetic Architecture & Construction
           </span>
         </motion.div>
 
         {/* Elegant Line-by-Line Headline Reveal */}
-        <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.15]">
+        <h1 className="font-serif text-4xl sm:text-6xl lg:text-[72px] font-bold tracking-[-0.03em] text-white mb-6 leading-[1.05]">
           <span className="block overflow-hidden relative py-1">
             <motion.span
               initial={{ y: "100%", opacity: 0 }}
@@ -212,7 +212,7 @@ export default function Hero() {
                 delay: 0.7,
                 ease: [0.215, 0.61, 0.355, 1],
               }}
-              className="block text-[#57D6FF]/95"
+              className="block text-[#5CC6EC]/95"
             >
               & Outdoor Living Spaces
             </motion.span>
@@ -238,13 +238,13 @@ export default function Hero() {
         >
           <button
             onClick={() => handleScrollTo("contact")}
-            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest bg-[#57D6FF] text-[#071A35] hover:bg-[#009DFF] hover:text-white transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 shadow-[0_0_20px_rgba(87,214,255,0.35)] cursor-pointer"
+            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest bg-[#5CC6EC] text-[#0F172A] hover:bg-[#0A5C9E] hover:text-white transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 shadow-[0_0_20px_rgba(92,198,236,0.35)] cursor-pointer"
           >
             Request a Consultation
           </button>
           <button
             onClick={() => handleScrollTo("projects")}
-            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest border border-white/25 text-white hover:bg-white hover:text-[#071A35] transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 backdrop-blur-sm bg-white/5 cursor-pointer"
+            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest border border-white/25 text-white hover:bg-white hover:text-[#0F172A] transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 backdrop-blur-sm bg-white/5 cursor-pointer"
           >
             View Portfolio
           </button>
@@ -264,7 +264,7 @@ export default function Hero() {
           onClick={() => handleScrollTo("services")}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[9px] uppercase tracking-widest text-[#57D6FF] font-semibold">
+          <span className="text-[9px] uppercase tracking-widest text-[#5CC6EC] font-semibold">
             Scroll to Explore
           </span>
           <ArrowDown className="w-4 h-4 text-white" />

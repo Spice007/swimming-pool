@@ -143,8 +143,8 @@ export default function Testimonials() {
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
       {/* Decorative details */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#57D6FF]/2 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#009DFF]/2 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[#5CC6EC]/2 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#0A5C9E]/2 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -152,17 +152,17 @@ export default function Testimonials() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-6 sm:mb-8 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#57D6FF] animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#57D6FF]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5CC6EC] animate-pulse" />
+              <span className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.25em] text-[#5CC6EC]">
                 CLIENT PERSPECTIVES
               </span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-white leading-[1.1]">
               Success Stories, <br />
-              <span className="text-[#57D6FF] italic">Real Impact.</span>
+              <span className="text-[#5CC6EC] italic">Real Impact.</span>
             </h2>
-            <div className="w-24 h-0.5 bg-[#57D6FF]/35 mt-4" />
-            <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed mt-4 max-w-2xl">
+            <div className="w-24 h-[1px] bg-[#5CC6EC]/35 mt-4" />
+            <p className="text-slate-400 font-light text-base md:text-[18px] leading-[1.85] mt-4 max-w-2xl">
               Explore how we've helped transform ideas into exceptional spaces and unforgettable experiences.
             </p>
           </div>
@@ -174,13 +174,13 @@ export default function Testimonials() {
               <button
                 onClick={() => setLayoutMode("grid")}
                 className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 z-10 cursor-pointer ${
-                  layoutMode === "grid" ? "text-[#071A35]" : "text-slate-400 hover:text-white"
+                  layoutMode === "grid" ? "text-[#0F172A]" : "text-slate-400 hover:text-white"
                 }`}
               >
                 {layoutMode === "grid" && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-[#57D6FF] rounded-full z-[-1]"
+                    className="absolute inset-0 bg-[#5CC6EC] rounded-full z-[-1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -190,13 +190,13 @@ export default function Testimonials() {
               <button
                 onClick={() => setLayoutMode("carousel")}
                 className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 z-10 cursor-pointer ${
-                  layoutMode === "carousel" ? "text-[#071A35]" : "text-slate-400 hover:text-white"
+                  layoutMode === "carousel" ? "text-[#0F172A]" : "text-slate-400 hover:text-white"
                 }`}
               >
                 {layoutMode === "carousel" && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-[#57D6FF] rounded-full z-[-1]"
+                    className="absolute inset-0 bg-[#5CC6EC] rounded-full z-[-1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -208,7 +208,7 @@ export default function Testimonials() {
             {/* Share CTA button */}
             <button
               onClick={() => setSubmitModalOpen(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 bg-white/5 hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] transition-all duration-300 cursor-pointer text-white"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 bg-white/5 hover:bg-[#5CC6EC] hover:text-[#0F172A] hover:border-[#5CC6EC] transition-all duration-300 cursor-pointer text-white"
             >
               <Share2 className="w-3.5 h-3.5" />
               <span>Share Your Journey</span>
@@ -219,7 +219,7 @@ export default function Testimonials() {
         {/* View Controls & Page Index Row (Below header, above cards grid) */}
         <div className="flex justify-end items-center gap-4 mb-6">
           <span className="font-serif text-sm text-slate-400">
-            <span className="text-[#57D6FF] font-bold">
+            <span className="text-[#5CC6EC] font-bold">
               {layoutMode === "carousel" 
                 ? `0${carouselIndex + 1}` 
                 : "01"}
@@ -232,7 +232,7 @@ export default function Testimonials() {
               disabled={layoutMode !== "carousel"}
               className={`w-9 h-9 rounded-full border border-white/10 text-white flex items-center justify-center transition-all duration-300 ${
                 layoutMode === "carousel" 
-                  ? "hover:bg-[#57D6FF] hover:text-[#071A35] hover:border-[#57D6FF] cursor-pointer" 
+                  ? "hover:bg-[#5CC6EC] hover:text-[#0F172A] hover:border-[#5CC6EC] cursor-pointer" 
                   : "opacity-40 cursor-default"
               }`}
               aria-label="Previous story"
@@ -244,7 +244,7 @@ export default function Testimonials() {
               disabled={layoutMode !== "carousel"}
               className={`w-9 h-9 rounded-full text-white flex items-center justify-center transition-all duration-300 ${
                 layoutMode === "carousel" 
-                  ? "border border-[#57D6FF] hover:bg-[#57D6FF] hover:text-[#071A35] cursor-pointer" 
+                  ? "border border-[#5CC6EC] hover:bg-[#5CC6EC] hover:text-[#0F172A] cursor-pointer" 
                   : "border border-white/10 opacity-40 cursor-default"
               }`}
               aria-label="Next story"
@@ -330,7 +330,7 @@ export default function Testimonials() {
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/5 gap-6 lg:gap-0">
             {/* Stat 1 */}
             <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
-              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#5CC6EC] shrink-0">
                 <Users className="w-5 h-5" />
               </div>
               <div className="text-left">
@@ -341,7 +341,7 @@ export default function Testimonials() {
 
             {/* Stat 2 */}
             <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
-              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#5CC6EC] shrink-0">
                 <Building2 className="w-5 h-5" />
               </div>
               <div className="text-left">
@@ -352,7 +352,7 @@ export default function Testimonials() {
 
             {/* Stat 3 */}
             <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
-              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#5CC6EC] shrink-0">
                 <Award className="w-5 h-5" />
               </div>
               <div className="text-left">
@@ -363,7 +363,7 @@ export default function Testimonials() {
 
             {/* Stat 4 */}
             <div className="flex items-center gap-4 px-0 lg:px-6 py-4 lg:py-0">
-              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#57D6FF] shrink-0">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#5CC6EC] shrink-0">
                 <Globe className="w-5 h-5" />
               </div>
               <div className="text-left">
@@ -412,10 +412,10 @@ function SuccessStoryCard({ story, onClick, index }: { story: Testimonial; onCli
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       onClick={onClick}
-      className="group relative flex flex-col justify-between rounded-3xl bg-slate-900/35 border border-white/5 shadow-xl hover:border-[#57D6FF]/30 hover:shadow-[0_20px_45px_rgba(87,214,255,0.12)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer overflow-hidden min-h-[500px]"
+      className="group relative flex flex-col justify-between rounded-3xl bg-slate-900/35 border border-white/5 shadow-xl hover:border-[#5CC6EC]/30 hover:shadow-[0_20px_45px_rgba(87,214,255,0.12)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer overflow-hidden min-h-[500px]"
     >
       {/* Background Interactive Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#57D6FF]/2 blur-[60px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#5CC6EC]/2 blur-[60px] pointer-events-none rounded-full" />
       
       {/* Project Image Banner */}
       <div className="relative w-full h-48 overflow-hidden bg-slate-950">
@@ -430,7 +430,7 @@ function SuccessStoryCard({ story, onClick, index }: { story: Testimonial; onCli
         
         {/* Rating Badge floating on image */}
         <div className="absolute top-4 left-4 flex items-center gap-1 bg-[#020813]/70 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10 text-xs font-semibold text-white">
-          <Star className="w-3.5 h-3.5 fill-[#57D6FF] text-[#57D6FF]" />
+          <Star className="w-3.5 h-3.5 fill-[#5CC6EC] text-[#5CC6EC]" />
           <span>{story.rating.toFixed(1)}</span>
         </div>
       </div>
@@ -439,7 +439,7 @@ function SuccessStoryCard({ story, onClick, index }: { story: Testimonial; onCli
       <div className="px-6 py-6 flex flex-col flex-1 gap-4 text-left">
         {/* Project Name and Icon Row */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-[#57D6FF] flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-[#5CC6EC] flex items-center justify-center shrink-0">
             {icon}
           </div>
           <h3 className="font-serif text-[17px] font-bold text-white tracking-tight leading-snug">
@@ -449,7 +449,7 @@ function SuccessStoryCard({ story, onClick, index }: { story: Testimonial; onCli
 
         {/* Written Review Quote */}
         <blockquote className="font-light text-slate-300 text-[13.5px] sm:text-[14.5px] leading-relaxed italic font-serif flex-1">
-          <span className="text-[#57D6FF] font-bold mr-1">“</span>
+          <span className="text-[#5CC6EC] font-bold mr-1">“</span>
           {story.quote}
         </blockquote>
 
@@ -484,9 +484,9 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
   return (
     <div
       onClick={onClick}
-      className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-3xl bg-slate-900/35 border border-white/5 shadow-2xl hover:border-[#57D6FF]/30 hover:shadow-[0_20px_45px_rgba(87,214,255,0.12)] transition-all duration-500 cursor-pointer overflow-hidden max-w-4xl min-h-[400px]"
+      className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-8 rounded-3xl bg-slate-900/35 border border-white/5 shadow-2xl hover:border-[#5CC6EC]/30 hover:shadow-[0_20px_45px_rgba(87,214,255,0.12)] transition-all duration-500 cursor-pointer overflow-hidden max-w-4xl min-h-[400px]"
     >
-      <div className="absolute top-0 right-0 w-80 h-80 bg-[#57D6FF]/4 blur-[100px] pointer-events-none rounded-full" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[#5CC6EC]/4 blur-[100px] pointer-events-none rounded-full" />
       
       {/* Left side details */}
       <div className="md:col-span-7 flex flex-col justify-between z-10 text-left">
@@ -495,14 +495,14 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
             <div className="flex items-center gap-2 bg-[#0F172A]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
               <span className="flex gap-1">
                 {[...Array(story.rating)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-[#57D6FF] text-[#57D6FF]" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-[#5CC6EC] text-[#5CC6EC]" />
                 ))}
               </span>
               <span className="text-[10px] font-bold text-white uppercase tracking-widest pl-1.5 border-l border-white/20">
                 Verified Review
               </span>
             </div>
-            <Quote className="w-12 h-12 text-[#57D6FF]/10 shrink-0" />
+            <Quote className="w-12 h-12 text-[#5CC6EC]/10 shrink-0" />
           </div>
 
           <blockquote className="font-serif font-light text-slate-100 text-lg sm:text-2xl leading-relaxed mb-6">
@@ -511,7 +511,7 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
         </div>
 
         <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6">
-          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0 bg-slate-900 ring-2 ring-[#57D6FF]/35 group-hover:ring-[#57D6FF]/60 transition-all duration-500 shadow-md">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0 bg-slate-900 ring-2 ring-[#5CC6EC]/35 group-hover:ring-[#5CC6EC]/60 transition-all duration-500 shadow-md">
             <Image
               src={story.profileImage}
               alt={story.name}
@@ -549,7 +549,7 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative flex items-center justify-center">
                 <span className="absolute w-16 h-16 rounded-full bg-white/20 animate-ping duration-1000 pointer-events-none" />
-                <span className="relative p-4 rounded-full bg-white/10 border border-white/30 backdrop-blur-md text-white shadow-xl group-hover/carousel-img:bg-[#57D6FF] group-hover/carousel-img:text-[#071A35] group-hover/carousel-img:border-[#57D6FF] transition-all duration-300">
+                <span className="relative p-4 rounded-full bg-white/10 border border-white/30 backdrop-blur-md text-white shadow-xl group-hover/carousel-img:bg-[#5CC6EC] group-hover/carousel-img:text-[#0F172A] group-hover/carousel-img:border-[#5CC6EC] transition-all duration-300">
                   <Play className="w-5 h-5 fill-current" />
                 </span>
               </div>
@@ -564,7 +564,7 @@ function SuccessStoryCarouselCard({ story, onClick }: { story: Testimonial; onCl
           </div>
           <div className="text-right">
             <span className="text-[10px] text-slate-400 uppercase tracking-widest block">Timeline</span>
-            <span className="text-xs font-bold text-[#57D6FF] uppercase tracking-wider block mt-0.5">{story.timeframe}</span>
+            <span className="text-xs font-bold text-[#5CC6EC] uppercase tracking-wider block mt-0.5">{story.timeframe}</span>
           </div>
         </div>
       </div>
@@ -596,7 +596,7 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-20 p-2.5 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-[#57D6FF] hover:text-[#071A35] transition-all duration-300 cursor-pointer"
+          className="absolute top-6 right-6 z-20 p-2.5 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-[#5CC6EC] hover:text-[#0F172A] transition-all duration-300 cursor-pointer"
           aria-label="Close stories"
         >
           <X className="w-5 h-5" />
@@ -626,7 +626,7 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
           <div className="absolute inset-0 bg-gradient-to-t from-[#020813] via-transparent to-black/25 pointer-events-none" />
           
           <div className="absolute bottom-6 left-6 sm:left-10 z-10 pointer-events-none">
-            <span className="text-[9px] font-bold uppercase tracking-widest text-[#57D6FF] bg-[#071A35]/80 px-3.5 py-1.5 rounded-full border border-[#57D6FF]/20 backdrop-blur-md inline-block mb-3">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#5CC6EC] bg-[#071A35]/80 px-3.5 py-1.5 rounded-full border border-[#5CC6EC]/20 backdrop-blur-md inline-block mb-3">
               {story.projectType}
             </span>
             <h3 className="font-serif text-2xl sm:text-4xl font-bold tracking-tight text-white">
@@ -640,7 +640,7 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
           {/* Left Details */}
           <div className="lg:col-span-8 space-y-6">
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] mb-3 flex items-center gap-2 font-serif">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-[#5CC6EC] mb-3 flex items-center gap-2 font-serif">
                 <Quote className="w-4 h-4" /> Client Testimony
               </h4>
               <p className="text-slate-300 font-light text-sm sm:text-base leading-relaxed italic text-left">
@@ -649,7 +649,7 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
             </div>
 
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] mb-3 flex items-center gap-2 font-serif">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-[#5CC6EC] mb-3 flex items-center gap-2 font-serif">
                 <Compass className="w-4 h-4" /> The Commission Story
               </h4>
               <p className="text-slate-400 font-light text-sm sm:text-base leading-relaxed text-left">
@@ -659,7 +659,7 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
 
             {story.projectImages.length > 1 && (
               <div>
-                <h4 className="text-sm font-bold uppercase tracking-widest text-[#57D6FF] mb-4 font-serif">
+                <h4 className="text-sm font-bold uppercase tracking-widest text-[#5CC6EC] mb-4 font-serif">
                   Gallery
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
@@ -676,15 +676,15 @@ function StoryDetailModal({ story, onClose }: { story: Testimonial; onClose: () 
           {/* Right Spec List */}
           <div className="lg:col-span-4 space-y-6 lg:border-l lg:border-white/10 lg:pl-6 text-left">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] block mb-1">Budget Range</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#5CC6EC] block mb-1">Budget Range</span>
               <span className="text-xs sm:text-sm font-semibold text-white">{story.budget}</span>
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] block mb-1">Timeframe</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#5CC6EC] block mb-1">Timeframe</span>
               <span className="text-xs sm:text-sm font-semibold text-white">{story.timeframe}</span>
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#57D6FF] block mb-1">Location</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#5CC6EC] block mb-1">Location</span>
               <span className="text-xs sm:text-sm font-semibold text-white">{story.location}</span>
             </div>
           </div>
@@ -814,7 +814,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
         {/* Progress Bar */}
         <div className="w-full h-1 bg-slate-900">
           <div
-            className="h-full bg-[#57D6FF] transition-all duration-300"
+            className="h-full bg-[#5CC6EC] transition-all duration-300"
             style={{ width: `${(step / 3) * 100}%` }}
           />
         </div>
@@ -823,7 +823,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto flex-1 space-y-5">
           {step === 1 && (
             <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#57D6FF] mb-2">Owner & Project Information</h4>
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#5CC6EC] mb-2">Owner & Project Information</h4>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Client Name */}
@@ -836,7 +836,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="e.g. Olumide Adebayo"
-                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                   />
                 </div>
 
@@ -849,7 +849,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                     value={formData.location}
                     onChange={handleInputChange}
                     placeholder="e.g. Ikoyi, Lagos"
-                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                   />
                 </div>
               </div>
@@ -865,7 +865,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                     value={formData.projectType}
                     onChange={handleInputChange}
                     placeholder="e.g. The Horizon Pool"
-                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                   />
                 </div>
 
@@ -876,7 +876,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                     name="rating"
                     value={formData.rating}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                   >
                     <option value={5}>5.0 - Absolutely Exceptional</option>
                     <option value={4}>4.0 - Very Good</option>
@@ -895,7 +895,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                     value={formData.budget}
                     onChange={handleInputChange}
                     placeholder="e.g. ₦800,000,000"
-                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                   />
                 </div>
 
@@ -908,7 +908,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                     value={formData.timeframe}
                     onChange={handleInputChange}
                     placeholder="e.g. 14 Weeks"
-                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                    className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                   />
                 </div>
               </div>
@@ -923,7 +923,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                   value={formData.quote}
                   onChange={handleInputChange}
                   placeholder="Sum up your experience in 1-2 lines..."
-                  className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all"
+                  className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all"
                 />
               </div>
             </div>
@@ -940,7 +940,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                   value={formData.fullStory}
                   onChange={handleInputChange}
                   placeholder="Detail the execution phase, materials used, structural solutions ADLAT delivered, and overall craftsmanship details..."
-                  className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#57D6FF] transition-all min-h-[120px]"
+                  className="w-full px-4 py-3 text-xs sm:text-sm text-white bg-slate-900/60 border border-white/10 rounded-2xl focus:outline-none focus:border-[#5CC6EC] transition-all min-h-[120px]"
                 />
               </div>
             </div>
@@ -948,7 +948,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
 
           {step === 3 && (
             <div className="space-y-5">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#57D6FF] mb-2">Upload Files</h4>
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#5CC6EC] mb-2">Upload Files</h4>
 
               {/* 3 Upload columns (Profile, Gallery, Video) */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -956,7 +956,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                 {/* 1. Profile photo Upload */}
                 <div className="space-y-2 text-center">
                   <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 block">Owner Portrait</span>
-                  <div className="relative border-2 border-dashed border-white/10 hover:border-[#57D6FF]/50 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[140px] bg-slate-900/35 transition-all">
+                  <div className="relative border-2 border-dashed border-white/10 hover:border-[#5CC6EC]/50 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[140px] bg-slate-900/35 transition-all">
                     {profilePreview ? (
                       <div className="relative w-16 h-16 rounded-full overflow-hidden border border-white/10">
                         <Image src={profilePreview} alt="Profile preview" fill className="object-cover" />
@@ -979,7 +979,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                 {/* 2. Project Photos Upload */}
                 <div className="space-y-2 text-center">
                   <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 block">Project Gallery</span>
-                  <div className="relative border-2 border-dashed border-white/10 hover:border-[#57D6FF]/50 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[140px] bg-slate-900/35 transition-all">
+                  <div className="relative border-2 border-dashed border-white/10 hover:border-[#5CC6EC]/50 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[140px] bg-slate-900/35 transition-all">
                     {projectPreviews.length > 0 ? (
                       <div className="flex flex-wrap gap-1.5 justify-center">
                         {projectPreviews.slice(0, 3).map((url, i) => (
@@ -988,7 +988,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                           </div>
                         ))}
                         {projectPreviews.length > 3 && (
-                          <span className="text-[8px] text-[#57D6FF] flex items-center justify-center font-bold">+{projectPreviews.length - 3}</span>
+                          <span className="text-[8px] text-[#5CC6EC] flex items-center justify-center font-bold">+{projectPreviews.length - 3}</span>
                         )}
                       </div>
                     ) : (
@@ -1010,10 +1010,10 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                 {/* 3. Testimonial Video Upload */}
                 <div className="space-y-2 text-center">
                   <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 block">Testimonial Video</span>
-                  <div className="relative border-2 border-dashed border-white/10 hover:border-[#57D6FF]/50 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[140px] bg-slate-900/35 transition-all">
+                  <div className="relative border-2 border-dashed border-white/10 hover:border-[#5CC6EC]/50 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[140px] bg-slate-900/35 transition-all">
                     {videoPreview ? (
                       <div className="flex flex-col items-center gap-1">
-                        <Video className="w-6 h-6 text-[#57D6FF]" />
+                        <Video className="w-6 h-6 text-[#5CC6EC]" />
                         <span className="text-[8px] text-slate-300 font-semibold line-clamp-1">{videoFile?.name}</span>
                       </div>
                     ) : (
@@ -1057,7 +1057,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
               <button
                 type="button"
                 onClick={() => setStep((s) => s + 1)}
-                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#57D6FF] text-[#071A35] hover:bg-[#009DFF] hover:text-white transition-all cursor-pointer"
+                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#5CC6EC] text-[#0F172A] hover:bg-[#0A5C9E] hover:text-white transition-all cursor-pointer"
               >
                 Continue
               </button>
@@ -1066,7 +1066,7 @@ function SubmitReviewModal({ onClose, onAddStory }: { onClose: () => void; onAdd
                 type="submit"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#57D6FF] text-[#071A35] hover:bg-[#009DFF] hover:text-white hover:shadow-[0_0_15px_rgba(87,214,255,0.3)] disabled:opacity-50 transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#5CC6EC] text-[#0F172A] hover:bg-[#0A5C9E] hover:text-white hover:shadow-[0_0_15px_rgba(87,214,255,0.3)] disabled:opacity-50 transition-all cursor-pointer flex items-center gap-1.5"
               >
                 {isSubmitting ? (
                   <span className="w-3.5 h-3.5 border-2 border-[#071A35] border-t-transparent rounded-full animate-spin" />

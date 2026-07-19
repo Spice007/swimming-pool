@@ -71,13 +71,13 @@ export default function ProcessTimeline() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#009DFF] block mb-3">
+          <span className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.25em] text-[#0A5C9E] block mb-3">
             Our Blueprint
           </span>
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight mb-6">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold tracking-tight mb-6 text-[#0F172A] leading-[1.1]">
             Execution Timeline
           </h2>
-          <p className="text-[#071A35]/70 font-light text-base sm:text-lg leading-relaxed">
+          <p className="text-[#6B7280] font-light text-base md:text-[18px] leading-[1.85]">
             Every masterpiece is built on strict standards. From surveying to final handover, we follow a rigorous process to guarantee absolute quality.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function ProcessTimeline() {
           {/* Animated Scroll-linked Cyan Path */}
           <motion.div
             style={{ scaleY, originY: 0 }}
-            className="absolute left-[20px] sm:left-[28px] top-4 bottom-4 w-0.5 bg-[#009DFF] shadow-[0_0_10px_rgba(0,157,255,0.5)]"
+            className="absolute left-[20px] sm:left-[28px] top-4 bottom-4 w-[1px] bg-[#0A5C9E] shadow-[0_0_10px_rgba(10,92,158,0.4)]"
           />
 
           {/* Timeline Nodes */}
@@ -122,23 +122,23 @@ function TimelineItem({ step, index }: { step: Step; index: number }) {
       {/* Node Bullet */}
       <div className="absolute -left-[32px] sm:-left-[44px] top-1.5 z-10 flex items-center justify-center">
         {/* Outer Halo */}
-        <div className="w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] rounded-full bg-white border-2 border-slate-300 flex items-center justify-center group-hover:border-[#009DFF] transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(87,214,255,0.6)]">
+        <div className="w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] rounded-full bg-white border-2 border-slate-300 flex items-center justify-center group-hover:border-[#0A5C9E] transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(10,92,158,0.4)]">
           {/* Inner Core */}
-          <div className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] rounded-full bg-slate-300 group-hover:bg-[#009DFF] transition-colors duration-300" />
+          <div className="w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] rounded-full bg-slate-300 group-hover:bg-[#0A5C9E] transition-colors duration-300" />
         </div>
       </div>
 
       {/* Box details */}
       <div className="flex-1 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-md relative overflow-hidden hover:shadow-lg transition-shadow duration-300">
         {/* Shimmer Border line */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#009DFF] to-[#57D6FF]" />
+        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#0A5C9E] to-[#5CC6EC]" />
         
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-slate-100 text-[#071A35] group-hover:bg-[#57D6FF]/10 group-hover:text-[#009DFF] transition-colors duration-300">
+            <div className="p-2.5 rounded-xl bg-slate-100 text-[#0F172A] group-hover:bg-[#5CC6EC]/10 group-hover:text-[#0A5C9E] transition-colors duration-300">
               <IconComponent className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-lg sm:text-xl font-bold tracking-tight">
+            <h3 className="font-serif text-lg sm:text-xl font-bold tracking-tight text-[#0F172A]">
               {step.title}
             </h3>
           </div>
@@ -147,7 +147,7 @@ function TimelineItem({ step, index }: { step: Step; index: number }) {
           </span>
         </div>
 
-        <p className="text-slate-500 font-light text-sm leading-relaxed">
+        <p className="text-[#6B7280] font-light text-sm md:text-[16px] leading-[1.8]">
           {step.description}
         </p>
       </div>

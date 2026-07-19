@@ -242,8 +242,8 @@ export default function BeforeAfter() {
       `}} />
       
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-[#0052FF]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0052FF]/5 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-[#0A5C9E]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0A5C9E]/5 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -251,15 +251,15 @@ export default function BeforeAfter() {
         <div className="flex flex-col md:flex-row md:items-start justify-between mb-16 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#0052FF]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0052FF]">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#0A5C9E]" />
+              <span className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.25em] text-[#0A5C9E]">
                 TRANSFORMATIONS
               </span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Before <span className="italic font-normal">&</span> After <span className="text-[#0052FF] italic font-semibold">Portfolio</span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-white leading-[1.1]">
+              Before <span className="italic font-normal">&</span> After <span className="text-[#5CC6EC] italic font-semibold">Portfolio</span>
             </h2>
-            <div className="w-20 h-0.5 bg-[#0052FF] mt-4" />
+            <div className="w-20 h-[1px] bg-[#5CC6EC] mt-4" />
           </div>
 
           <div className="md:max-w-md lg:max-w-lg">
@@ -310,7 +310,7 @@ export default function BeforeAfter() {
               onClick={scrollPrev}
               disabled={activeIndex === 0}
               className={`absolute -left-4 lg:-left-8 top-[39%] -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/10 text-white shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                activeIndex === 0 ? "opacity-20 cursor-not-allowed bg-[#0A1122]/20" : "opacity-90 hover:opacity-100 hover:scale-105 hover:bg-[#0052FF] hover:border-[#0052FF] active:scale-95 bg-[#0A1122]/80"
+                activeIndex === 0 ? "opacity-20 cursor-not-allowed bg-[#0A1122]/20" : "opacity-90 hover:opacity-100 hover:scale-105 hover:bg-[#0A5C9E] hover:border-[#0A5C9E] active:scale-95 bg-[#0A1122]/80"
               }`}
               aria-label="Previous transformations"
             >
@@ -323,7 +323,7 @@ export default function BeforeAfter() {
               onClick={scrollNext}
               disabled={activeIndex >= projects.length - visibleCards}
               className={`absolute -right-4 lg:-right-8 top-[39%] -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/10 text-white shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                activeIndex >= projects.length - visibleCards ? "opacity-20 cursor-not-allowed bg-[#0A1122]/20" : "opacity-90 hover:opacity-100 hover:scale-105 hover:bg-[#0052FF] hover:border-[#0052FF] active:scale-95 bg-[#0A1122]/80"
+                activeIndex >= projects.length - visibleCards ? "opacity-20 cursor-not-allowed bg-[#0A1122]/20" : "opacity-90 hover:opacity-100 hover:scale-105 hover:bg-[#0A5C9E] hover:border-[#0A5C9E] active:scale-95 bg-[#0A1122]/80"
               }`}
               aria-label="Next transformations"
             >
@@ -340,7 +340,7 @@ export default function BeforeAfter() {
                 key={idx}
                 onClick={() => scrollToActiveIndex(idx)}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeIndex === idx ? "w-6 bg-[#0052FF]" : "w-2 bg-slate-700 hover:bg-slate-600"
+                  activeIndex === idx ? "w-6 bg-[#0A5C9E]" : "w-2 bg-slate-700 hover:bg-slate-600"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -456,7 +456,7 @@ function BeforeAfterCard({ project, index }: { project: Project; index: number }
           draggable={false}
           priority
         />
-        <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+        <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A5C9E] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
           After
         </div>
 
@@ -502,10 +502,10 @@ function BeforeAfterCard({ project, index }: { project: Project; index: number }
       {/* 2. Text Details */}
       <div className="mt-5 flex flex-col gap-3">
         <div>
-          <h3 className="font-serif text-lg sm:text-xl font-bold text-white leading-snug truncate group-hover/card:text-[#0052FF] transition-colors duration-300">
+          <h3 className="font-serif text-lg sm:text-xl font-bold text-white leading-snug truncate group-hover/card:text-[#0A5C9E] transition-colors duration-300">
             {project.title}
           </h3>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#0052FF] mt-2 block">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#0A5C9E] mt-2 block">
             — {project.category.toUpperCase()}
           </span>
         </div>
@@ -513,12 +513,12 @@ function BeforeAfterCard({ project, index }: { project: Project; index: number }
         {/* Location & Year row on a single line */}
         <div className="flex items-center gap-3 mt-2 text-xs text-slate-400 font-medium font-sans">
           <span className="flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-[#0052FF]" />
+            <MapPin className="w-4 h-4 text-[#0A5C9E]" />
             {project.location}
           </span>
           <span className="text-slate-700">|</span>
           <span className="flex items-center gap-1.5">
-            <Calendar className="w-4 h-4 text-[#0052FF]" />
+            <Calendar className="w-4 h-4 text-[#0A5C9E]" />
             {project.year}
           </span>
         </div>
@@ -606,7 +606,7 @@ function BeforeAfterModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 rounded-full border border-white/10 text-slate-400 hover:text-white hover:bg-[#0052FF] hover:border-[#0052FF] transition-all flex items-center justify-center cursor-pointer z-30 bg-[#080E1C]"
+          className="absolute top-4 right-4 w-10 h-10 rounded-full border border-white/10 text-slate-400 hover:text-white hover:bg-[#0A5C9E] hover:border-[#0A5C9E] transition-all flex items-center justify-center cursor-pointer z-30 bg-[#080E1C]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -647,7 +647,7 @@ function BeforeAfterModal({
                     {isActive && (
                       <motion.div
                         layoutId="activeTabIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0052FF]"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0A5C9E]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -706,7 +706,7 @@ function BeforeAfterModal({
                     draggable={false}
                     priority
                   />
-                  <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+                  <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A5C9E] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
                     After
                   </div>
                 </div>
@@ -732,7 +732,7 @@ function BeforeAfterModal({
                   draggable={false}
                   priority
                 />
-                <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+                <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A5C9E] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
                   After
                 </div>
 
@@ -807,7 +807,7 @@ function BeforeAfterModal({
                   draggable={false}
                   priority
                 />
-                <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0052FF] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
+                <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-[#0A5C9E] border border-white/10 backdrop-blur-sm text-[10px] uppercase font-bold tracking-widest text-white pointer-events-none">
                   After
                 </div>
               </div>
@@ -819,7 +819,7 @@ function BeforeAfterModal({
         {!isExpanded && (
           <div className="w-full md:w-[380px] flex flex-col justify-between py-2 transition-all duration-500">
             <div>
-              <span className="text-[9px] font-bold uppercase tracking-widest text-[#0052FF]">
+              <span className="text-[9px] font-bold uppercase tracking-widest text-[#0A5C9E]">
                 — TRANSFORMATIONS
               </span>
               <h3 className="font-serif text-lg sm:text-xl font-bold text-white mt-1.5 leading-tight">
@@ -837,12 +837,12 @@ function BeforeAfterModal({
               {/* Location & Year */}
               <div className="flex items-center gap-3 text-[11px] text-slate-300 font-medium font-sans">
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-[#0052FF]" />
+                  <MapPin className="w-3 h-3 text-[#0A5C9E]" />
                   {project.location}
                 </span>
                 <span className="text-slate-700">|</span>
                 <span className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3 text-[#0052FF]" />
+                  <Calendar className="w-3 h-3 text-[#0A5C9E]" />
                   {project.year}
                 </span>
               </div>
@@ -859,7 +859,7 @@ function BeforeAfterModal({
                 </div>
                 <div>
                   <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest block">PROJECT VALUE</span>
-                  <span className="text-[11px] font-semibold text-[#0052FF] mt-0.5 block">{project.value}</span>
+                  <span className="text-[11px] font-semibold text-[#0A5C9E] mt-0.5 block">{project.value}</span>
                 </div>
                 <div>
                   <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest block">PREMIUM FINISH</span>

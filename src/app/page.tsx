@@ -4,7 +4,6 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import BeforeAfter from "@/components/BeforeAfter";
-import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -18,7 +17,6 @@ export default function Home() {
         <Services />
         <PortfolioGrid />
         <BeforeAfter />
-        <Testimonials />
         <ContactForm />
       </main>
       <Footer />

@@ -41,7 +41,7 @@ export default function Hero() {
         {/* Fallback Image */}
         <Image
           src="/images/hero-fallback.png"
-          alt="Luxury architectural pool"
+          alt="Luxury custom swimming pool design and construction in Lagos, Nigeria"
           fill
           priority
           quality={100}

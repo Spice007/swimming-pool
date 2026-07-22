@@ -412,9 +412,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: (p: Proj
       {/* Background Image with Hover Zoom */}
       <Image
         src={project.image}
-        alt={project.name}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        alt={`${project.name} - custom swimming pool in ${project.location}`}
         className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
       />
 

@@ -48,7 +48,7 @@ const services: Service[] = [
   {
     title: "Outdoor Living Spaces",
     description: "Sunken fire pits, fully equipped outdoor kitchens, luxury cabanas, and premium decks built for high-end entertaining.",
-    image: "/images/project-resort-new.png",
+    image: "/images/service-outdoor-living.png",
   },
 ];
 

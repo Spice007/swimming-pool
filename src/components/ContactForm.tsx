@@ -180,7 +180,7 @@ export default function ContactForm() {
             {/* Quick Action Contact Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {/* WhatsApp Button */}
-              
+              <a
                 href="https://wa.me/2348169718959"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -193,7 +193,7 @@ export default function ContactForm() {
               </a>
 
               {/* Call Button */}
-              
+              <a
                 href="tel:+2348169718959"
                 className="flex-1 flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#57D6FF]/10 border border-[#57D6FF]/30 text-[#57D6FF] hover:bg-[#57D6FF] hover:text-[#071A35] hover:scale-105 active:scale-95 transition-all duration-300 shadow-md font-bold text-xs uppercase tracking-widest cursor-pointer"
               >

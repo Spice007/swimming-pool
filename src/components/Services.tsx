@@ -33,7 +33,7 @@ const services: Service[] = [
   {
     title: "High-End Renovations",
     description: "Transforming older swimming pools into modern masterpieces with seamless infinity edges and state-of-the-art finishes.",
-    image: "/images/high-end-renovations.png",
+    image: "/images/project-resort-new.png",
   },
   {
     title: "Landscape Architecture",
@@ -43,7 +43,7 @@ const services: Service[] = [
   {
     title: "Custom Water Features",
     description: "Automated rain curtains, sheet waterfalls, and fiber-optic laminars created for stunning visual and acoustic effects.",
-    image: "/images/custom-water-features.png",
+    image: "/images/water-feature-infinity.jpeg",
   },
   {
     title: "Outdoor Living Spaces",
@@ -148,3 +148,4 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     </motion.div>
   );
 }
+"Update service images"

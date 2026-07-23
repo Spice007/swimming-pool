@@ -45,37 +45,63 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission latency
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Premium luxury confetti splash (Aqua Blue #57D6FF & Accent Blue #009DFF & Gold/White)
-    const duration = 3 * 1000;
-    const end = Date.now() + duration;
-
-    const frame = () => {
-      confetti({
-        particleCount: 4,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0, y: 0.8 },
-        colors: ["#57D6FF", "#009DFF", "#ffffff", "#071A35"],
-      });
-      confetti({
-        particleCount: 4,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1, y: 0.8 },
-        colors: ["#57D6FF", "#009DFF", "#ffffff", "#071A35"],
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "fd7a9fe4-bff8-425d-82ed-0fa9f9966b86",
+          subject: "New Pool Consultation Request",
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          project_type: formData.projectType,
+          budget: formData.budget,
+          message: formData.message,
+        }),
       });
 
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+
+        const duration = 3 * 1000;
+        const end = Date.now() + duration;
+
+        const frame = () => {
+          confetti({
+            particleCount: 4,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0, y: 0.8 },
+            colors: ["#57D6FF", "#009DFF", "#ffffff", "#071A35"],
+          });
+          confetti({
+            particleCount: 4,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1, y: 0.8 },
+            colors: ["#57D6FF", "#009DFF", "#ffffff", "#071A35"],
+          });
+
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        };
+        frame();
+      } else {
+        alert("Something went wrong sending your request. Please try again or contact us directly.");
       }
-    };
-    frame();
+    } catch (error) {
+      alert("Something went wrong sending your request. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -154,7 +180,7 @@ export default function ContactForm() {
             {/* Quick Action Contact Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {/* WhatsApp Button */}
-              <a
+              
                 href="https://wa.me/2348169718959"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -167,7 +193,7 @@ export default function ContactForm() {
               </a>
 
               {/* Call Button */}
-              <a
+              
                 href="tel:+2348169718959"
                 className="flex-1 flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#57D6FF]/10 border border-[#57D6FF]/30 text-[#57D6FF] hover:bg-[#57D6FF] hover:text-[#071A35] hover:scale-105 active:scale-95 transition-all duration-300 shadow-md font-bold text-xs uppercase tracking-widest cursor-pointer"
               >
